@@ -1,1 +1,7 @@
-{"name":"Anurag Ghosh","tagline":"Undergrad Researcher in Computer Vision","body":"### Hello!\r\nThis is the page where I'll post updates on my research work.\r\n","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
+{
+  "name": "Anurag Ghosh",
+  "tagline": "Undergrad Researcher in Computer Vision",
+  "body": "### Update on Dataset\r\n\r\nThe recorded egocentric videos are of good quality but the associated GPS quality is very bad in indoor areas. So, it was necessary to clip out parts of the video so that experiments can be performed on the embedded video.\r\n[[https://github.com/anuragxel/anuragxel.github.io/blob/master/ReportImages/GPS_Data_Error.png|alt=Error in Indoor areas]]\r\n\r\n[[https://github.com/anuragxel/anuragxel.github.io/blob/master/ReportImages/GPS_Data_cleaned.png|alt=Cleaned up data]]\r\n\r\nAlso, a ground truth was established for edges.\r\n\r\n[[https://github.com/anuragxel/anuragxel.github.io/blob/master/ReportImages/Graph_edges.png|alt=Edges of the graph]]\r\n\r\nTextual data has been collected, categorized (into glue and content sentences) and cleaned up accordingly. Me and Yash are currently working on implementing the Bag of Visual Words for visual localization and integrating that to the pipeline, we will be finishing that and running benchmarks **by this weekend**.\r\n\r\n\r\n### Hello!\r\nThis is the page where I'll post updates on my research work.",
+  "google": "",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
