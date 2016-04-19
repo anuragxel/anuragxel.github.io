@@ -35,8 +35,8 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3>
-<a id="update-on-visual-localization" class="anchor" href="#update-on-visual-localization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Visual Localization</h3>
+        <h1>
+<a id="update-on-visual-localization" class="anchor" href="#update-on-visual-localization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Visual Localization</h1>
 
 <p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set and are a different set of videos to get 915 frames to test on.</p>
 
@@ -44,7 +44,13 @@
 
 <p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data.png" alt="Random Sample"></p>
 
+<h3>
+<a id="random-sample" class="anchor" href="#random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random Sample</h3>
+
 <p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data_result.png" alt="Random Sample Result"></p>
+
+<h3>
+<a id="result-of-the-random-sample" class="anchor" href="#result-of-the-random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Result of the random sample</h3>
 
 <p>The difference in the estimate and the actual coordinates was calculated using Harversine formula which is a widely used formula. Two measures were calculated for different values of 'k', first the mean error distance (mean) (in metres) and other is hit rate of samples (ht10, ht15) above a certain threshold distance (in metres). The values are tabulated below -</p>
 
@@ -89,8 +95,8 @@
 
 <hr>
 
-<h3>
-<a id="update-on-dataset" class="anchor" href="#update-on-dataset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Dataset</h3>
+<h1>
+<a id="update-on-dataset" class="anchor" href="#update-on-dataset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Dataset</h1>
 
 <p>The recorded egocentric videos are of good quality but the associated GPS quality is very bad in indoor areas. So, it was necessary to clip out parts of the video so that experiments can be performed on the embedded video.</p>
 
