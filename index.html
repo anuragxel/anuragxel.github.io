@@ -36,6 +36,54 @@
         </div>
 
         <h3>
+<a id="update-on-visual-localization" class="anchor" href="#update-on-visual-localization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Visual Localization</h3>
+
+<p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set and are a different set of videos to get 915 frames to test on.</p>
+
+<p>We then trained a trained a BagOfVisualWords model with a vocabulory size of 500,000. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. The difference in the estimate and the actual coordinates was calculated using Harversine formula which is a widely used formula. Two measures were calculated for different values of 'k', first the mean error distance (mean) (in metres) and other is hit rate of samples (ht10, ht15) above a certain threshold distance (in metres). The values are tabulated below -</p>
+
+<table>
+<thead>
+<tr>
+<th>k</th>
+<th>1</th>
+<th>3</th>
+<th>5</th>
+<th>10</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mean</td>
+<td>6.8</td>
+<td>6.3</td>
+<td>6.1</td>
+<td>5.8</td>
+<td>5.7</td>
+</tr>
+<tr>
+<td>hit (10)</td>
+<td>80.3</td>
+<td>81.4</td>
+<td>81.0</td>
+<td>80.4</td>
+<td>79.5</td>
+</tr>
+<tr>
+<td>hit (15)</td>
+<td>90.5</td>
+<td>93.3</td>
+<td>95.5</td>
+<td>97.5</td>
+<td>97.5</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>
 <a id="update-on-dataset" class="anchor" href="#update-on-dataset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Dataset</h3>
 
 <p>The recorded egocentric videos are of good quality but the associated GPS quality is very bad in indoor areas. So, it was necessary to clip out parts of the video so that experiments can be performed on the embedded video.</p>
