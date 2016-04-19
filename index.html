@@ -38,9 +38,9 @@
         <h1>
 <a id="update-on-visual-localization" class="anchor" href="#update-on-visual-localization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Visual Localization</h1>
 
-<p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set and are a different set of videos to get 915 frames to test on.</p>
+<p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set (different set of videos) to get 915 frames to test on.</p>
 
-<p>We then trained a trained a BagOfVisualWords model with a vocabulory size of 500,000. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. </p>
+<p>We then  trained a BagOfVisualWords model with a vocabulory size of 500,000 and extracted SIFT features from the images. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. </p>
 
 <h3>
 <a id="random-sample" class="anchor" href="#random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random Sample</h3>
