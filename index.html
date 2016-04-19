@@ -40,7 +40,13 @@
 
 <p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set and are a different set of videos to get 915 frames to test on.</p>
 
-<p>We then trained a trained a BagOfVisualWords model with a vocabulory size of 500,000. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. The difference in the estimate and the actual coordinates was calculated using Harversine formula which is a widely used formula. Two measures were calculated for different values of 'k', first the mean error distance (mean) (in metres) and other is hit rate of samples (ht10, ht15) above a certain threshold distance (in metres). The values are tabulated below -</p>
+<p>We then trained a trained a BagOfVisualWords model with a vocabulory size of 500,000. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. </p>
+
+<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data.png" alt="Random Sample"></p>
+
+<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data_result.png" alt="Random Sample Result"></p>
+
+<p>The difference in the estimate and the actual coordinates was calculated using Harversine formula which is a widely used formula. Two measures were calculated for different values of 'k', first the mean error distance (mean) (in metres) and other is hit rate of samples (ht10, ht15) above a certain threshold distance (in metres). The values are tabulated below -</p>
 
 <table>
 <thead>
