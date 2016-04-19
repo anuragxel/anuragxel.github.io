@@ -42,15 +42,15 @@
 
 <p>We then trained a trained a BagOfVisualWords model with a vocabulory size of 500,000. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. </p>
 
-<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data.png" alt="Random Sample"></p>
-
 <h3>
 <a id="random-sample" class="anchor" href="#random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random Sample</h3>
 
-<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data_result.png" alt="Random Sample Result"></p>
+<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data.png" alt="Random Sample"></p>
 
 <h3>
 <a id="result-of-the-random-sample" class="anchor" href="#result-of-the-random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Result of the random sample</h3>
+
+<p><img src="https://raw.githubusercontent.com/anuragxel/anuragxel.github.io/master/ReportImages/VL_report_data_result.png" alt="Random Sample Result"></p>
 
 <p>The difference in the estimate and the actual coordinates was calculated using Harversine formula which is a widely used formula. Two measures were calculated for different values of 'k', first the mean error distance (mean) (in metres) and other is hit rate of samples (ht10, ht15) above a certain threshold distance (in metres). The values are tabulated below -</p>
 
