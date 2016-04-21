@@ -40,7 +40,7 @@
 
 <p>We extracted video frames with associated GPS coordinates. As we had 1 gps coordinate per second and the video was recorded at 30 frames per second. We extracted 2 frames each second from our training videos and assigned them the same GPS coordinates as we know that there wouldn't be much change in GPS value in a second. This resulted in a training set of 5982 images and associated GPS coordinates. For our test set, we similarly extracted 1 frame per second from the test set which do not overlap with our training set (different set of videos) to get 915 frames to test on.</p>
 
-<p>We then  trained a BagOfVisualWords model with a vocabulory size of 500,000 and extracted SIFT features from the images. Our idea of localization involved retrieving the closest training samples for each of the test samples. The top 'k' training samples were considered and their GPS coordinate were averaged to get an estimate of the GPS coordinate of the test sample. </p>
+<p>We then  trained a BagOfVisualWords model with a vocabulory size of 500,000 and extracted SIFT features from the images. Our idea of localization involved retrieving the closest training samples for each of the test samples.</p>
 
 <h3>
 <a id="random-sample" class="anchor" href="#random-sample" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random Sample</h3>
@@ -57,43 +57,37 @@
 <table>
 <thead>
 <tr>
-<th>k</th>
-<th>1</th>
-<th>3</th>
-<th>5</th>
-<th>10</th>
-<th>15</th>
+<th>Measure</th>
+<th>NN</th>
+<th>US_2</th>
+<th>US_3</th>
+<th>US_5</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>mean</td>
-<td>6.8</td>
-<td>6.3</td>
-<td>6.1</td>
-<td>5.8</td>
-<td>5.7</td>
+<td>loc_5</td>
+<td>48.1400</td>
+<td>48.2495</td>
+<td>49.1247</td>
+<td>46.8271</td>
 </tr>
 <tr>
-<td>hit (10)</td>
-<td>80.3</td>
-<td>81.4</td>
-<td>81.0</td>
-<td>80.4</td>
-<td>79.5</td>
+<td>loc_10</td>
+<td>80.3063</td>
+<td>81.9475</td>
+<td>82.7133</td>
+<td>83.1510</td>
 </tr>
 <tr>
-<td>hit (15)</td>
-<td>90.5</td>
-<td>93.3</td>
-<td>95.5</td>
-<td>97.5</td>
-<td>97.5</td>
+<td>loc_15</td>
+<td>90.4814</td>
+<td>92.1225</td>
+<td>93.3260</td>
+<td>95.9519</td>
 </tr>
 </tbody>
 </table>
-
-<hr>
 
 <h1>
 <a id="update-on-dataset" class="anchor" href="#update-on-dataset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update on Dataset</h1>
