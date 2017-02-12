@@ -73,6 +73,9 @@
                       <li>
                           <a href="player_stats.html"><i class="fa fa-edit fa-fw"></i> Player Analysis</a>
                       </li>
+                      <li>
+                          <a href="issues.html"><i class="fa fa-list-alt fa-fw"></i> Issues</a>
+                      </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -87,45 +90,78 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <div class="row">
-              <div class="col-lg-12">
-                  <h3> Nadal: "Tennis  may  be  thought  of  as  a  very  fast  moving  chess  match,  where  players  systematically
-                   maneuver their opponent into a position of  weakness  before attempting to win the point."</h1>
-              </div>
-            </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                   <div class="well">
-                      <h2>Player Analysis</h2>
-                      <h4>Extract player tragectories and other features.</h4>
-                      <h4>Compute statistics like player heatmap, shot-impact heatmap etc</h4>
-                      <h4> Statistics in mind: __ Vishal __ </h4>
+                      <h2>Problem Statement</h2>
+                      <p>Traditional statistical based tennis analysis as done by platforms like IBM slamtracker[1], reports statistical information about aces, winners, errors, server speeds,
+                         etc of tennis players, but doesn’t use spatiotemporal information of the ball and the players into account. On the other hand, Xinyu Wei[2] used hawk-eye data
+                         (multiple camera systems) to perform some interesting analysis and discovers insightful information about the top three seeded players from Australian Open 2012.
+                         As an example, Wei[2] creates probability distribution function of winners hit by a top-seeded player say, Federer, based on the location of the player and his opponent
+                         on the court, and deduces from this heat map that Federer is a baseline hitter. In this work, we will try to perform a similar analysis, but use Broadcast Tennis Videos
+                         (BTV) instead, because of the unavailability of the hawk-eye data (as it’s not public). We aim to employ computer vision techniques to extract ball and player trajectories
+                         to find events like hit by a player, impact on the ground, etc, as our high-level features for analysis. As an application, we would also like to show, how these pdfs
+                         of a player are changing over time and perform analysis on a famous rivalry like Federer vs Nadal</p>
                   </div>
 
                   <div class="well">
-                      <h2>Predicting the Winning Point Probability of a rally</h2>
-                      <h4>For each rally, outcome can be detected.</h4>
-                      <h4>Both player and shot context are important. Wei shows, small set of features are useful.</h4>
-                      <h4>Can we find such features automatically?</h4>
-                      <p class="text-danger">Issues: Australian Open matches need to be sourced to perform direct comparison.</p>
+                      <h2>Analysis Categories</h2>
+                      <ul>
+                          <li>Heat maps for winners/errors of Nadal, Federer, and Wawrinka on variables:<br/>
+                              1. Player of interest and opponents location on the tennis court.<br/>
+                              2. Ball impact location on the court.
+                          </li>
+                          <li>Classification of serve type based on the location of the service inside the service
+                              block. And analyzing the serve variation of a player depending on the opponent over
+                              the tournament.
+                          </li>
+                          <li>Comparing rivalry using 17 matches of Nadal and Federer. We might be able to
+                              discover some patterns from these heat maps across games, and see why Nadal has
+                              the lead of 9-3 in grand slam matches and how it has changed over time.
+                          </li>
+                          <li>Comparing temporal changes of these behaviors might not be possible for grand
+                              slam tournaments, because of the lack of data. We might be able to do it on ATP
+                              tournaments played by a player if we can get access to tennistv.org for ATP
+                              tournament.
+                          </li>
+                      </ul>
                   </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                   <div class="well">
-                      <h2>What are the most surprising shots/rallies in the match?</h2>
-                      <h4>Summarize the gameplay.</h4>
-                      <h4>Utlize trajecteries to identify outliers</h4>
-                      <h4>Define a suspense metric and find rallies which maximize it.</h4>
+                      <h2>Abstract Level Methodology</h2>
+                      <ol>
+                        <li> The first task would be to segment the match video into play and non-play segments.</li>
+                        <li> All operations will be applied to the play segments of the match.</li>
+                        <li> Player detection.</li>
+                        <li> Ball Trajectory extraction.</li>
+                        <li> Event detection: classifying the ball location as hit, bounce, etc.</li>
+                        <li> Finding the court surface homography to get impact locations and player foot location on world coordinate system of the court.</li>
+                        <li> Label each ball bounce location with attributes such as: Hit by (player1/player2), scored by: (player1/player2/continuation). Use the scorecard in the BTV to extract the scores and label each ball trajectory and bounce location.</li>
+                        <li> One example to classify the impact location as winner using the “hit by” attribute and “scored by” attribute, to create heat maps from such data.</li>
+                      <ol>
                   </div>
 
                   <div class="well">
-                      <h2>Predict the serve region for a probable serve. (Tennis)</h2>
-                      <h4>Divide the serve region into 3/4 regions.</h4>
-                      <h4>Learn a player-opponent model and use that to classify the most probable region.</h4>
-                      <h4>Instead of dividing the serve region, just project probability maps?</h4>
+                      <h2>Evaluation</h2>
+                      <ol>
+                           <li> Qualitatively comparing the heat maps with the results of Wei[2]?</li>
+                           <li> Qualitatively comparing the characteristics of the player analysis from some basic
+                      facts about the player, for example deducing that Federer is a baseline player or
+                      Nadal is a left handed player.</li>
+                           <li> Manually annotate player location and bounce location for one match, to test the
+                      performance of the high-level feature extraction and labeling system.</li>
+                           <li> Use statistical data like winners and errors from IBM tracker, as ground truth to
+                      compare our system's performance.</li>
+                    </ol>
+                  </div>
+                  <div class="well">
+                      <h2>References</h2>
+                      [1]  <a href="http://www.ausopen.com/en_AU/slamtracker">Slamtracker</a><br/>
+                      [2]  <a href="http://disneyresearch.s3-us-west-1.amazonaws.com/wp-content/uploads/20151211035022/Sweet-Spot-Using-Spatiotemporal-Data-to-Discover-and-Predict-Shots-in-Tennis-Paper.pdf">Sweet Spot: Using spatiotemporal data to discover and predict shots in tennis.</a>
                   </div>
                     <!-- /.panel .chat-panel -->
                 </div>

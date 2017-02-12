@@ -73,6 +73,9 @@
                         <li>
                             <a href="player_stats.html"><i class="fa fa-edit fa-fw"></i> Player Analysis</a>
                         </li>
+                        <li>
+                            <a href="issues.html"><i class="fa fa-list-alt fa-fw"></i> Issues</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -87,49 +90,67 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <div class="row">
-              <div class="col-lg-12">
-                  <h3> Nadal: "Tennis  may  be  thought  of  as  a  very  fast  moving  chess  match,  where  players  systematically
-                   maneuver their opponent into a position of  weakness  before attempting to win the point."</h1>
-              </div>
-            </div>
+
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                   <div class="well">
-                      <h2>Player Analysis</h2>
-                      <h4>Extract player tragectories and other features.</h4>
-                      <h4>Compute statistics like player heatmap, shot-impact heatmap etc</h4>
-                      <h4> Statistics in mind: __ Vishal __ </h4>
+                      <h2>Problem Statement</h2>
+                      <p>Current models of content delivery mechanisms for sports, such as Tennis TV [1], do not utilize the computational power and methods at disposal to make their
+                         content more interactive. With the advent of reasonably accurate methods for automatically adding useful annotations to sports matches [2], it's possible to
+                         create informative and entertaining extensions, directly using Broadcast Tennis Videos (BTV). We will first temporally parse
+                         and segment the game into serves, rallies, points and sets along with play, non-play (replay, audience etc) and detect the play events wrt to a player
+                         such as error, win, lose etc. Building upon these methods, we would
+                         <ul>
+                            <li>Generate highlights for a particular match.</li>
+                            <li>Create a retrieval system where similar shots/rallies undertaken in other matches can be viewed. Or shots of a particular type are annotated and can be searched.</li>
+                         </ul>
+                      </p>
                   </div>
 
                   <div class="well">
-                      <h2>Predicting the Winning Point Probability of a rally</h2>
-                      <h4>For each rally, outcome can be detected.</h4>
-                      <h4>Both player and shot context are important. Wei shows, small set of features are useful.</h4>
-                      <h4>Can we find such features automatically?</h4>
-                      <p class="text-danger">Issues: Australian Open matches need to be sourced to perform direct comparison.</p>
+                      <h2>Details</h2>
+                      <h4>Highlights generation</h4>
+                      <ul>
+                          <li>This problem can be modelled as "detection" of highlights problem but then that has been done earlier.</li>
+                          <li>As a video summarization problem where the comparison is done with human curated highlights.</li>
+                          <li>As a player modelling problem where "surprising" shots are discovered by measuring the deviation from the "expected" player shot outcome.</li>
+                      </ul>
+                      <ul>
+                      </ul>
+                      <h4></h4>
                   </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                   <div class="well">
-                      <h2>What are the most surprising shots/rallies in the match?</h2>
-                      <h4>Summarize the gameplay.</h4>
-                      <h4>Utlize trajecteries to identify outliers</h4>
-                      <h4>Define a suspense metric and find rallies which maximize it.</h4>
+                      <h2>Abstract Level Methodology</h2>
+                      <ol>
+                        <li> Temporal Segmentation and structure parsing of the match.</li>
+                        <li> Event detection of each rally, Player1 won/Player2 lost.</li>
+                        <li> Player Position trajectory detection for a rally.</li>
+                        <li> Ball Trajectory extraction for a rally.</li>
+                        <li> Use the scorecard in the BTV to extract and keep track of the scores which would act as game context.</li>
+                        <li> Highlight generation using the playing trajectories and game context. Possibly try predicting the impact region of a shot that's going to occur? </li>
+                        <li> CLuster similar rallies based o</li>
+                      <ol>
                   </div>
 
                   <div class="well">
-                      <h2>Predict the serve region for a probable serve. (Tennis)</h2>
-                      <h4>Divide the serve region into 3/4 regions.</h4>
-                      <h4>Learn a player-opponent model and use that to classify the most probable region.</h4>
-                      <h4>Instead of dividing the serve region, just project probability maps?</h4>
+                      <h2>Evaluation</h2>
+                      <ol>
+                           <li></li>
+                           <li></li>
+                    </ol>
+                  </div>
+                  <div class="well">
+                      <h2>References</h2>
+                      [1]  <a href="https://www.tennistv.com/">TennisTV</a><br/>
+                      [2]  <a href="http://www.sciencedirect.com/science/article/pii/S0262885614001309">Automatic annotation of tennis games: An integration of audio, vision, and learning</a>
                   </div>
                     <!-- /.panel .chat-panel -->
                 </div>
-                <!-- /.col-lg-4 -->
             </div>
             <!-- /.row -->
         </div>

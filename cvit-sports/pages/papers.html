@@ -74,6 +74,9 @@
                         <li>
                             <a href="player_stats.html"><i class="fa fa-edit fa-fw"></i> Player Analysis</a>
                         </li>
+                        <li>
+                            <a href="issues.html"><i class="fa fa-list-alt fa-fw"></i> Issues</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -150,6 +153,25 @@
                       <p class="text-danger">CVPR'17 (Under Review)</p>
                       <p>Proposes an alternate approach exploiting the edge information and demonstrates its success in a specific scenario of registering football broadcast video frames on the static top view model of the playing surface.</p>
                   </div>
+
+                  <div class="well">
+                      <h2><a href="http://link.springer.com/chapter/10.1007/978-3-540-74260-9_100">Automated Stroke Classification in Tennis</a></h2>
+                      <p class="text-danger">International Conference on Image Analysis and Recognition (ICIAR) '07</p>
+                      <p>Classifying the different tennis strokes (Forehand, Backhand and No Shot) is the prime goal of this project.</p>
+                      <p>Algorithm uses the gradient information of the player's skeleton. The player is modeled using color histogram and tracked across the video using histogram back projection. An oriented histogram of the skeleton obtained in each frame forms the feature vector which is then sent to a SVM classifier.</p>
+                      <img src="../images/stroke-class-07.png" class="img-responsive center-block"></img>
+                  </div>
+
+                  <div class="well">
+                      <h2><a href="http://www.sciencedirect.com/science/article/pii/S1077314208001355">A framework for flexible summarization of racquet sports video using multiple modalities</a></h2>
+                      <p class="text-danger">CVIU, March'09</p>
+                      <p>Our approach combines the structure event detection method with the highlight ranking algorithm</p>
+                      <p>Firstly, unsupervised shot clustering and supervised audio classification are performed to obtain the visual and audio mid-level patterns respectively.
+                         Then, a temporal voting scheme for structure event detection is proposed by utilizing the correspondence between audio and video content.
+                         Finally, by using the affective features extracted from the detected events, a linear highlight model is adopted to rank the detected events in terms of their exciting degrees.</p>
+                      <p>Human evaluation for highlights.</p>
+                      <img src="../images/summarize-racquet-multimodal-09.png" class="img-responsive center-block"></img>
+                  </div>
                     <!-- /.panel -->
                 </div>
 
@@ -223,7 +245,17 @@
                      <p>We extend our previous work to track multiple tennis balls fully automatically. The algorithm presented in this paper requires the set of all-pairs shortest paths in a directed and edge-weighted graph.</p>
                      <p>We also propose an efficient All-Pairs Shortest Path algorithm by exploiting a special topological property of the graph.</p>
                      <p class="text-success"> Prev: <a href="http://epubs.surrey.ac.uk/733265/1/BMVC05.pdf">A Tennis Ball Tracking Algorithm for Automatic Annotation of Tennis Match, BMVC'05</a>
+                     <p class="text-success"> Prev: <a href="http://www3.ee.surrey.ac.uk/CVSSP/Publications/papers/yan-cvpr-2006.pdf">A Novel Data Association Algorithm for Object Tracking in Clutter with Application to Tennis Video Analysis</a>
                      <img src="../images/apsp-multi-object-07.png" class="img-responsive center-block"></img>
+                </div>
+
+                <div class="well">
+                     <h2><a href="http://ieeexplore.ieee.org/document/1246883/">Generic approach to highlights extraction from a sport video</a></h2>
+                     <p class="text-danger">ICIP'03</p>
+                     <p>Instead, we search for highlights at places where strong excitement is evoked in the user by the content of a video. It is namely realistic to assume that independent
+                       of the type of a highlighting event, each such event induces an increase in user's excitement. We mimic the changes in user's excitement by observing the temporal
+                       behavior of domain-independent audiovisual signal properties and the editing scheme of a video.</p>
+                     <img src="../images/highlight-icip-03.png" class="img-responsive center-block"></img>
                 </div>
                     <!-- /.panel .chat-panel -->
                 </div>
