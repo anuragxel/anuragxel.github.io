@@ -95,7 +95,8 @@
     searchTag = document.createElement('button');
     searchTag.className = 'filter-tag filter-tag--active filter-tag--search';
     searchTag.textContent = '🔍 "' + query + '" ✕';
-    searchTag.addEventListener('click', function () {
+    searchTag.addEventListener('click', function (e) {
+      e.stopPropagation();
       removeSearchTag();
       // Reset to "Featured"
       var featuredBtn = filters.querySelector('.filter-tag[data-filter="featured"]');
