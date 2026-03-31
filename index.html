@@ -1,631 +1,566 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!--   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-  <link rel="stylesheet" type="text/css" href="/style.css" />
-
-  <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    title {
-      font-family: "Roboto"
-    }
-
-    p {
-      font-family: "Roboto"
-    }
-
-    .cornell-red {
-      color: #b31b1b;
-    }
-  </style>
-
-  <title>Anurag Ghosh</title>
-
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-
-  <meta name="author" content="Anurag Ghosh" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="canonical" href="https://anuragghosh.com/">
-
+  <title>Anurag Ghosh</title>
+  <meta name="description"
+    content="Anurag Ghosh — Robotics PhD at Carnegie Mellon University working on Computer Vision and Imaging. Research in autonomous driving, domain adaptation, and real-time perception.">
+  <meta name="author" content="Anurag Ghosh">
+  <link rel="canonical" href="https://anuragxel.github.io/">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-
-
 <body>
-  <table
-    style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <!-- Table for Intro -->
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h1>
-                Anurag Ghosh
-              </h1>
-              <p>I'm a <a href="https://www.ri.cmu.edu/">Robotics</a> PhD at <a href="https://www.cmu.edu/">Carnegie
-                  Mellon</a>, advised by <a href="http://www.cs.cmu.edu/~srinivas/"> Srinivasa Narasimhan</a> working on
-                <a href="http://vision.cs.cmu.edu/">Computer Vision</a> and <a
-                  href="https://imaging.cs.cmu.edu/">Imaging</a> problems. I was co-advised by <a
-                  href="http://www.cs.cmu.edu/~srinivas/"> Srinivasa Narasimhan</a> and <a
-                  href="https://www.ri.cmu.edu/ri-people/christoph-mertz/">Christoph Mertz</a> when I got my Masters
-                here.
-              </p>
 
-              <p>
-                I spent a few wonderful years at <a
-                  href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research</a>
-                working at the intersection of Computer Vision and Networked/Distributed <a
-                  href="https://www.microsoft.com/en-us/research/theme/systems/">Systems</a> for <a
-                  href="https://www.microsoft.com/en-us/research/collaboration/scai/">Social Good</a>. I worked with <a
-                  href="https://www.microsoft.com/en-us/research/people/padmanab/">Venkat Padmanabhan</a>, <a
-                  href="https://www.microsoft.com/en-us/research/people/akshayn/">Akshay Nambi</a> and <a
-                  href="https://www.microsoft.com/en-us/research/people/taganu/">Tanuja Ganu</a>.
-              </p>
-              <p>
-                Even earlier, I studied at a vibrant and beautiful research-focused school, <a
-                  href="https://www.iiit.ac.in/">IIIT Hyderabad</a>. I was advised by <a
-                  href="https://faculty.iiit.ac.in/~jawahar/">C. V. Jawahar</a> and we worked on problems involving <a
-                  href="https://cvit.iiit.ac.in">Computer Vision</a> for Sports.
-              </p>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <span class="icon-moon">🌙</span>
+    <span class="icon-sun">☀️</span>
+  </button>
 
+  <main class="container">
 
-              <p>Here's my <a
-                  href='https://drive.google.com/file/d/1YMNkHLYem6KvyA-nGR6g3KNJMhml6iMD/view?usp=sharing'>Resume</a>.
-              </p>
+    <!-- ============================================
+         HERO / INTRO
+         ============================================ -->
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 class="hero__name">Anurag Ghosh</h1>
+          <div class="hero__bio">
+            <p>I'm a <a href="https://www.ri.cmu.edu/">Robotics</a> PhD at <a href="https://www.cmu.edu/">Carnegie
+                Mellon</a>, advised by <a href="http://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a> working on
+              <a href="http://vision.cs.cmu.edu/">Computer Vision</a> and <a
+                href="https://imaging.cs.cmu.edu/">Imaging</a> problems. I was co-advised by <a
+                href="http://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a> and <a
+                href="https://www.ri.cmu.edu/ri-people/christoph-mertz/">Christoph Mertz</a> when I got my Masters
+              here.
+            </p>
 
+            <p>
+              I spent a few wonderful years at <a
+                href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research</a>
+              working at the intersection of Computer Vision and Networked/Distributed <a
+                href="https://www.microsoft.com/en-us/research/theme/systems/">Systems</a> for <a
+                href="https://www.microsoft.com/en-us/research/collaboration/scai/">Social Good</a>. I worked with <a
+                href="https://www.microsoft.com/en-us/research/people/padmanab/">Venkat Padmanabhan</a>, <a
+                href="https://www.microsoft.com/en-us/research/people/akshayn/">Akshay Nambi</a> and <a
+                href="https://www.microsoft.com/en-us/research/people/taganu/">Tanuja Ganu</a>.
+            </p>
+            <p>
+              Even earlier, I studied at a vibrant and beautiful research-focused school, <a
+                href="https://www.iiit.ac.in/">IIIT Hyderabad</a>. I was advised by <a
+                href="https://faculty.iiit.ac.in/~jawahar/">C. V. Jawahar</a> and we worked on problems involving <a
+                href="https://cvit.iiit.ac.in">Computer Vision</a> for Sports.
+            </p>
 
-              <p><strong>Mentoring:</strong>If you would like to work with me, drop me an email with any specific
-                finding you are excited by and why!</p>
+            <p>Here's my <a
+                href='https://drive.google.com/file/d/1YMNkHLYem6KvyA-nGR6g3KNJMhml6iMD/view?usp=sharing'>Resume</a>.
+            </p>
+          </div>
 
-              <p style="text-align:center">
-                <a target="_blank" href="mailto:anuraggh@andrew.cmu.edu"> Email</a> &nbsp;/&nbsp;
-                <a href="https://github.com/anuragxel">GitHub</a> &nbsp;/&nbsp;
-                <a href="https://scholar.google.com/citations?user=zd0-SNQAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/anuragxel/"> LinkedIn </a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="tn/images/profile.jpeg">
-            </td>
-          </tr>
-        </table>
+          <div class="hero__mentoring">
+            <strong>Open to opportunities:</strong> I'm on the industry job market. If you think we'd be a good fit,
+            let's chat!
+          </div>
 
-        <!-- Table for Research Agenda -->
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h1>Research</h1>
-              <p>
-                I love building intelligent systems that work. To do so, I draw inspiration from natural sciences, and
-                my work revolves around developing novel algorithms and applications of computer vision, machine
-                learning, robotics and, systems.
-              </p>
-            </td>
-          </tr>
-        </table>
+          <div class="hero__links">
+            <a target="_blank" href="mailto:anuraggh@andrew.cmu.edu">Email</a>
+            <a href="https://github.com/anuragxel">GitHub</a>
+            <a href="https://scholar.google.com/citations?user=zd0-SNQAAAAJ">Google Scholar</a>
+            <a href="https://www.linkedin.com/in/anuragxel/">LinkedIn</a>
+          </div>
+        </div>
 
-        <!-- Table for Projects Stuff -->
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <div class="hero__photo">
+          <img alt="Anurag Ghosh profile photo" src="tn/images/profile.jpeg">
+        </div>
+      </div>
+    </section>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <video autoplay loop muted playsinline style="width:auto; height:auto; max-width:100%;">
-                <source src="/tn/images/rad-lad-demo.mp4" type="video/mp4">
-              </video>
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;"><span
-                  class="cornell-red">RAD-LAD</span>: Rule and Language Grounded Autonomous Driving in Real-Time</p>
-              <strong>Anurag Ghosh</strong>, Srinivasa Narasimhan, Manmohan Chandraker, Francesco Pittaluga
-              <br>
-              [<a href="https://www.cs.cmu.edu/~ILIM/rad-lad/">Website</a>][<a
-                href="https://arxiv.org/abs/2603.28522">Paper</a>][<a
-                href="https://www.youtube.com/watch?v=H6-MGF6mQQY">Video</a>]
-              <p>A real-time planner combining rule-based (RAD) and language-based (LAD) autonomous driving for tackling
-                long-tailed situations.</p>
-            </td>
-          </tr>
+    <!-- ============================================
+         RESEARCH
+         ============================================ -->
+    <section class="section" id="research">
+      <h2 class="section-title">Research</h2>
+      <p class="research__intro">
+        I love building intelligent systems that work. To do so, I draw inspiration from natural sciences, and
+        my work revolves around developing novel algorithms and applications of computer vision, machine
+        learning, robotics and, systems.
+      </p>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/roadwork.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;"> <span
-                  class="cornell-red">ROAD</span>Work Dataset: Learning to <span class="cornell-red">R</span>ecognize,
-                <span class="cornell-red">O</span>bserve, <span class="cornell-red">A</span>nalyze and <span
-                  class="cornell-red">D</span>rive Through <span class="cornell-red">Work</span> Zones
-              </p>
-              <strong>Anurag Ghosh</strong>, Shen Zheng, Robert Tamburo, Khiem Vuong, Juan R. Alvarez Padilla, Hailiang
-              Zhu, Michael Cardei, Nicholas Dunn, Christoph Mertz, Srinivasa Narasimhan
-              <br>
-              <em>International Conference on Computer Vision<strong>(ICCV)</strong>, 2025</em>
-              [<a href="http://www.cs.cmu.edu/~roadwork/">Website</a>][<a
-                href="https://arxiv.org/abs/2406.07661">Paper</a>][<a
-                href="https://github.com/anuragxel/roadwork-dataset">Code</a>]
-              <p>Largest open-source dataset for studying autonomous driving in work zones.</p>
-            </td>
-          </tr>
+      <!-- RAD-LAD -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <video autoplay loop muted playsinline>
+            <source src="tn/images/rad-lad-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title"><span class="highlight">RAD-LAD</span>: Rule and Language Grounded Autonomous
+            Driving in Real-Time</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, Srinivasa Narasimhan, Manmohan Chandraker,
+            Francesco Pittaluga</p>
+          <div class="paper-card__links">
+            <a href="https://www.cs.cmu.edu/~ILIM/rad-lad/">Website</a>
+            <a href="https://arxiv.org/abs/2603.28522">Paper</a>
+            <a href="https://www.youtube.com/watch?v=H6-MGF6mQQY">Video</a>
+          </div>
+          <p class="paper-card__desc">A real-time planner combining rule-based (RAD) and language-based (LAD) autonomous
+            driving for tackling long-tailed situations.</p>
+        </div>
+      </article>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/aerial_megadepth_cvpr25.jpg" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">AerialMegaDepth: Learning
-                Aerial-Ground Reconstruction and View Synthesis</p>
-              Khiem Vuong, <strong>Anurag Ghosh</strong>, Deva Ramanan*, Srinivasa Narasimhan*, Shubham Tulsiani*
-              <br>
-              <em>Conference on Computer Vision and Pattern Recognition<strong>(CVPR)</strong>, 2025</em>
-              [<a href="https://aerial-megadepth.github.io/">Website</a>][<a
-                href="https://arxiv.org/abs/2504.13157">Paper</a>][<a
-                href="https://github.com/kvuong2711/aerial-megadepth">Code</a>]
-              <p>A scalable data generation framework that combines mesh-renderings with real images, enabling robust 3D
-                reconstruction across extreme viewpoint variations (e.g., aerial-ground).</p>
-            </td>
-          </tr>
+      <!-- ROADWork -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/roadwork.png" alt="ROADWork Dataset">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title"><span class="highlight">ROAD</span>Work Dataset: Learning to <span
+              class="highlight">R</span>ecognize,
+            <span class="highlight">O</span>bserve, <span class="highlight">A</span>nalyze and <span
+              class="highlight">D</span>rive Through <span class="highlight">Work</span> Zones
+          </h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, Shen Zheng, Robert Tamburo, Khiem Vuong, Juan R.
+            Alvarez Padilla, Hailiang Zhu, Michael Cardei, Nicholas Dunn, Christoph Mertz, Srinivasa Narasimhan</p>
+          <p class="paper-card__venue">International Conference on Computer Vision <strong>(ICCV)</strong>, 2025</p>
+          <div class="paper-card__links">
+            <a href="http://www.cs.cmu.edu/~roadwork/">Website</a>
+            <a href="https://arxiv.org/abs/2406.07661">Paper</a>
+            <a href="https://github.com/anuragxel/roadwork-dataset">Code</a>
+          </div>
+          <p class="paper-card__desc">Largest open-source dataset for studying autonomous driving in work zones.</p>
+        </div>
+      </article>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/da-badweather.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Saliency Guided Image Warping for
-                Unsupervised Domain Adaptation</p>
-              Shen Zheng&starf;, <strong>Anurag Ghosh&starf;</strong>, Srinivasa Narasimhan
-              <br>
-              <em>Winter Conference on Applications of Computer Vision<strong>(WACV)</strong>, 2025</em>
-              [<a href="https://instancewarp.github.io">Website</a>][<a
-                href="https://arxiv.org/abs/2403.12712">Paper</a>][<a
-                href="https://github.com/ShenZheng2000/Instance-Warp">Code</a>]
-              <p>Oversample salient object regions by warping source-domain images in-place during training while
-                performing domain adaptation. Improve adaptation across geographies, lighting and weather conditions, is
-                agnostic to the task, domain adaptation algorithm, saliency guidance, and underlying model architecture.
-              </p>
-            </td>
-          </tr>
+      <!-- AerialMegaDepth -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/aerial_megadepth_cvpr25.jpg" alt="AerialMegaDepth">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">AerialMegaDepth: Learning Aerial-Ground Reconstruction and View Synthesis</h3>
+          <p class="paper-card__authors">Khiem Vuong, <strong>Anurag Ghosh</strong>, Deva Ramanan*, Srinivasa
+            Narasimhan*, Shubham Tulsiani*</p>
+          <p class="paper-card__venue">Conference on Computer Vision and Pattern Recognition <strong>(CVPR)</strong>,
+            2025</p>
+          <div class="paper-card__links">
+            <a href="https://aerial-megadepth.github.io/">Website</a>
+            <a href="https://arxiv.org/abs/2504.13157">Paper</a>
+            <a href="https://github.com/kvuong2711/aerial-megadepth">Code</a>
+          </div>
+          <p class="paper-card__desc">A scalable data generation framework that combines mesh-renderings with real
+            images, enabling robust 3D reconstruction across extreme viewpoint variations (e.g., aerial-ground).</p>
+        </div>
+      </article>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/two-plane-banner.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Learned Two-Plane Perspective Prior
-                based Image Resampling for Efficient Object Detection</p>
-              <strong>Anurag Ghosh</strong>, N Dinesh Reddy, Christoph Mertz, Srinivasa Narasimhan
-              <br>
-              <em>Conference on Computer Vision and Pattern Recognition<strong>(CVPR)</strong>, 2023</em>
-              [<a href="https://geometriczoom.github.io">Website</a>][<a
-                href="https://arxiv.org/abs/2303.14311">Paper</a>][<a
-                href="https://github.com/geometriczoom/two-plane-prior">Code</a>]
-              <p>A learnable geometry-guided prior that incorporates rough geometry of the 3D scene (a ground plane and
-                a plane above) to resample the images for efficient object detection. This significantly improves small
-                and far-away object detection performance while also being more efficient.</p>
-            </td>
-          </tr>
+      <!-- Saliency Guided Image Warping -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/da-badweather.png" alt="Saliency Guided Image Warping">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Saliency Guided Image Warping for Unsupervised Domain Adaptation</h3>
+          <p class="paper-card__authors">Shen Zheng&#9733;, <strong>Anurag Ghosh&#9733;</strong>, Srinivasa Narasimhan
+          </p>
+          <p class="paper-card__venue">Winter Conference on Applications of Computer Vision <strong>(WACV)</strong>,
+            2025</p>
+          <div class="paper-card__links">
+            <a href="https://instancewarp.github.io">Website</a>
+            <a href="https://arxiv.org/abs/2403.12712">Paper</a>
+            <a href="https://github.com/ShenZheng2000/Instance-Warp">Code</a>
+          </div>
+          <p class="paper-card__desc">Oversample salient object regions by warping source-domain images in-place during
+            training while performing domain adaptation. Improve adaptation across geographies, lighting and weather
+            conditions, is agnostic to the task, domain adaptation algorithm, saliency guidance, and underlying model
+            architecture.</p>
+        </div>
+      </article>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/perception-banner.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Exploiting Tradeoffs in Resource
-                Constrained Vision</p>
+      <!-- Two-Plane Perspective Prior -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/two-plane-banner.png" alt="Two-Plane Perspective Prior">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Learned Two-Plane Perspective Prior based Image Resampling for Efficient Object
+            Detection</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, N Dinesh Reddy, Christoph Mertz, Srinivasa
+            Narasimhan</p>
+          <p class="paper-card__venue">Conference on Computer Vision and Pattern Recognition <strong>(CVPR)</strong>,
+            2023</p>
+          <div class="paper-card__links">
+            <a href="https://geometriczoom.github.io">Website</a>
+            <a href="https://arxiv.org/abs/2303.14311">Paper</a>
+            <a href="https://github.com/geometriczoom/two-plane-prior">Code</a>
+          </div>
+          <p class="paper-card__desc">A learnable geometry-guided prior that incorporates rough geometry of the 3D scene
+            (a ground plane and a plane above) to resample the images for efficient object detection. This significantly
+            improves small and far-away object detection performance while also being more efficient.</p>
+        </div>
+      </article>
 
-              <p>Novel methods for improving trade-offs at different levels of vision system abstractions. We considered
-                constraints like real-timeness, network latency/bandwidth, inter-process contention, onboard compute,
-                power, heat and battery considerations. </p>
-              <h4> Relevant Publications </h4>
+      <!-- Chanakya -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/perception-banner.png" alt="Chanakya">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Chanakya: Learning Runtime Decisions for Adaptive Real-Time Perception</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, Vaibhav Balloli, Akshay Nambi, Aditya Singh,
+            Tanuja Ganu</p>
+          <p class="paper-card__venue">Conference on Neural Information Processing Systems <strong>(NeurIPS)</strong>,
+            2023</p>
+          <div class="paper-card__links">
+            <a href="https://microsoft.github.io/Chanakya/">Website</a>
+            <a href="https://arxiv.org/abs/2106.05665">Paper</a>
+            <a href="https://github.com/microsoft/chanakya">Code</a>
+          </div>
+          <p class="paper-card__award">Honorable Mention, Streaming Perception Challenge, CVPR 2021. <a
+              href="https://youtu.be/DM8jWfi69zM?t=2823">Presentation at WAD</a></p>
+          <p class="paper-card__desc">A learned execution framework that automatically balances accuracy and latency for
+            real-time perception, outperforming static and dynamic policies on both server GPUs and edge devices.</p>
+        </div>
+      </article>
 
-              [1] <strong>Chanakya: Learning Runtime Decisions for Adaptive Real-Time Perception</strong>
-              <br>
-              <strong>Anurag Ghosh</strong>, Vaibhav Balloli, Akshay Nambi, Aditya Singh, Tanuja Ganu
-              <br>
-              <em>Conference on Neural Information Processing Systems<strong>(NeurIPS)</strong>, 2023</em>
-              [<a href="https://microsoft.github.io/Chanakya/">Website</a>][<a
-                href="https://arxiv.org/abs/2106.05665">Paper</a>][<a
-                href="https://github.com/microsoft/chanakya">Code</a>]
-              <br>
-              <strong style="color: #DC143C;">Honorable Mention, Streaming Perception Challenge, CVPR 2021.</strong> [<a
-                href="https://youtu.be/DM8jWfi69zM?t=2823">Presentation at WAD</a>]
-              <br>
-              <br>
+      <!-- REACT -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/cloud-edge-banner.png" alt="REACT">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">REACT: Streaming Video Analytics On The Edge With Asynchronous Cloud Support
+          </h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, Srinivasan Iyengar, Stephen Lee, Anuj Rathore,
+            Venkat Padmanabhan</p>
+          <p class="paper-card__venue">International Conference on Internet of Things Design and Implementation
+            <strong>(IoTDI)</strong>, 2023
+          </p>
+          <div class="paper-card__links">
+            <a href="https://arxiv.org/abs/2210.01402">Paper</a>
+          </div>
+          <p class="paper-card__desc">An edge-cloud fusion framework for video analytics that fuses edge and cloud
+            predictions asynchronously, improving object detection accuracy by up to 50% over edge-only or cloud-only
+            approaches.</p>
+        </div>
+      </article>
 
-              [2] <strong>REACT: Streaming Video Analytics On The Edge With Asynchronous Cloud Support</strong>
-              <br>
-              <strong>Anurag Ghosh</strong>, Srinivasan Iyengar, Stephen Lee, Anuj Rathore, Venkat Padmanabhan
-              <br>
-              <em>International Conference on Internet of Things Design and Implementation <strong>(IoTDI)</strong>,
-                2023</em>
-              [<a href="https://arxiv.org/abs/2210.01402">Paper</a>]
-              <br>
-              <br>
+      <!-- Holistic Energy Awareness for Intelligent Drones -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/drone-buildsys21.png" alt="Holistic Energy Awareness for Intelligent Drones">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Holistic Energy Awareness for Intelligent Drones</h3>
+          <p class="paper-card__authors">Srinivasan Iyengar, Ravi Raj Saxena, Joydeep Pal, Bhawana Chhaglani,
+            <strong>Anurag Ghosh</strong>, Venkat Padmanabhan, Prabhakar T. Venkata
+          </p>
+          <p class="paper-card__venue">International Conference on Systems for Energy-Efficient Built Environments
+            <strong>(BuildSys)</strong>, 2021
+          </p>
+          <div class="paper-card__links">
+            <a href="https://dl.acm.org/doi/10.1145/3486611.3486651">Paper</a>
+          </div>
+          <p class="paper-card__award">(Best Paper Runner-Up)</p>
+          <p class="paper-card__desc">A holistic energy management framework for intelligent drones that jointly
+            optimizes compute, communication, and flight energy. Also <a
+              href="https://dl.acm.org/doi/full/10.1145/3641855">appeared</a> in Transactions on Sensor Networks.</p>
+        </div>
+      </article>
 
-              [3] <strong>Holistic Energy Awareness for Intelligent Drones</strong>
-              <br>
-              Srinivasan Iyengar, Ravi Raj Saxena, Joydeep Pal, Bhawana Chhaglani, <strong>Anurag Ghosh</strong>, Venkat
-              Padmanabhan, Prabhakar T. Venkata
-              <br>
-              <em>International Conference on Systems for Energy-Efficient Built Environments
-                <strong>(BuildSys)</strong></em>, 2021
-              [<a href="https://dl.acm.org/doi/10.1145/3486611.3486651">Paper</a>]
-              <strong style="color: #DC143C;">(Best Paper Runner-Up)</strong>
-              (Also <a href="https://dl.acm.org/doi/full/10.1145/3641855">appeared</a> in Transactions on Sensor
-              Networks)
-            </td>
-          </tr>
+      <!-- Smartphone-based Driver License Testing -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/hams-demo.png" alt="HAMS Driver License Testing">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Smartphone-based Driver License Testing</h3>
 
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/hams-demo.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Smartphone-based Driver License
-                Testing</p>
-              <p><strong><a href="https://www.youtube.com/watch?v=zFuIP5hI4yU&t=2807">Watch Microsoft CEO Satya Nadella
-                    explain the project!</a></strong></p>
-              <p><strong><a
-                    href="https://darpg.gov.in/sites/default/files/2020-Coffee%20Table%20Book%20-2%20-%20Innovation_1.pdf">Read
-                    about our work on PM Awards Innovations Coffee Table Book!</a> <a
-                    href="/tn/assets/HAMS-CoffeeTableBook-Extract.pdf">(Extracted here)</a></strong></p>
-              <p><strong style="color: #DC143C;">Deployed in multiple states/10+ cities in India, automatically testing
-                  hundreds of thousands of drivers at a low-cost with >99% accuracy (test verified by human operator).
-                  See <a
-                    href="https://www.microsoft.com/en-us/research/project/hams/#!automated-driver-license-testing">Overview</a>
-                  and <a href="https://hams-dashboard.westus3.cloudapp.azure.com/">Dashboard</a>.</strong></p>
+          <p class="paper-card__impact"><a href="https://www.youtube.com/watch?v=zFuIP5hI4yU&t=2807">Watch Microsoft CEO
+              Satya Nadella explain the project!</a></p>
+          <p class="paper-card__impact"><a
+              href="https://darpg.gov.in/sites/default/files/2020-Coffee%20Table%20Book%20-2%20-%20Innovation_1.pdf">Read
+              about our work on PM Awards Innovations Coffee Table Book!</a> <a
+              href="tn/assets/HAMS-CoffeeTableBook-Extract.pdf">(Extracted here)</a></p>
 
-              <p>Instead of <a
-                  href="https://timesofindia.indiatimes.com/city/delhi/how-automated-tests-will-ensure-only-expert-drivers-are-on-road/articleshow/65940721.cms">prohibitively
-                  expensive</a> (>150,000$) overhead pole-mounted camera infrastructure to estimate car trajectories and
-                judge driver manuevers, we use sub-500$ smartphones and additionally get driver state monitoring for
-                free (face verification, mirror scanning, distraction and seatbelt checks).
-              <p>
+          <p class="paper-card__impact">Deployed in multiple states/10+ cities in India, automatically testing
+            hundreds of thousands of drivers at a low-cost with &gt;99% accuracy (test verified by human operator).
+            See <a
+              href="https://www.microsoft.com/en-us/research/project/hams/#!automated-driver-license-testing">Overview</a>
+            and <a href="https://hams-dashboard.westus3.cloudapp.azure.com/">Dashboard</a>.</p>
 
-              <h4> Relevant Publications </h4>
+          <p class="paper-card__desc">Instead of <a
+              href="https://timesofindia.indiatimes.com/city/delhi/how-automated-tests-will-ensure-only-expert-drivers-are-on-road/articleshow/65940721.cms">prohibitively
+              expensive</a> (&gt;150,000$) overhead pole-mounted camera infrastructure to estimate car trajectories and
+            judge driver manuevers, we use sub-500$ smartphones and additionally get driver state monitoring for
+            free (face verification, mirror scanning, distraction and seatbelt checks).</p>
 
-              [1] <strong>Smartphone-based Driver License Testing</strong>
-              <br>
-              <strong>Anurag Ghosh</strong>, Vijay Lingam, Ishit Mehta, Akshay Nambi, Venkat Padmanabhan, Satish
-              Sangameswaran, <em>Conference on Embedded Networked Sensor Systems <strong>(SenSys Demo)</strong></em>,
-              2019
-              [<a
-                href="https://www.microsoft.com/en-us/research/publication/alt-towards-automating-driver-license-testing-using-smartphones/">Paper</a>]
-              <br>
-              <br>
+          <h4 class="paper-card__sub-heading">Relevant Publications</h4>
 
-              [2] <strong>ALT: Towards Automating Driver License Testing using Smartphones</strong>
-              <br>
-              Akshay Nambi, Ishit Mehta, <strong>Anurag Ghosh</strong>, Vijay Lingam, Venkat Padmanabhan, <em>Conference
-                on Embedded Networked Sensor Systems <strong>(SenSys)</strong></em>, 2019
-              [<a
-                href="https://www.microsoft.com/en-us/research/publication/alt-towards-automating-driver-license-testing-using-smartphones/">Paper</a>]
-              <br>
-
-
-            </td>
-          </tr>
-
-
-
-
-
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/fednadal-thesis.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Analyzing Racket Sports From
-                Broadcast Videos</p>
-              <p><strong style="color: #DC143C;">Piloted with ESPN/Star Sports at Premier Badminton League, watched by
-                  tens of millions in South East Asia.</strong></p>
-
-              <p>Do we really need half a million dollars for HawkEye to understand players? Our End-to-end framework
-                automatically tags broadcast sport videos in near-real time. Our analysis shows a single camera suffices
-                for mining rich and actionable player data, instead of relying on existing cumbursome multi-camera
-                setups or sensors. <a href="https://arxiv.org/abs/2308.12199">It is used for live broadcast
-                  visualizations.</a></p>
-              <h4> Relevant Publications </h4>
-
-              [1] <strong>Analyzing Racket Sports From Broadcast Videos</strong>
-              <br>
-              Anurag Ghosh, <strong>IIIT Hyderabad (Master's Thesis)</strong>, 2019
-              [<a
-                href="http://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/746">Paper</a>]
-              <br>
-              <br>
-
-              [2] <strong>Towards Structured Analysis of Broadcast Badminton Videos</strong>
-              <br>
-              <strong>Anurag Ghosh</strong>, Suriya Singh, C.V. Jawahar, <em>Winter Conference On Applications of
-                Computer Vision <strong>(WACV)</strong></em>, 2018
-              [<a href="http://cvit.iiit.ac.in/research/projects/cvit-projects/badminton-analytics">Paper</a>]
-              <br>
-              <br>
-
-              [3] <strong>SmartTennisTV: An automatic indexing system for tennis</strong>
-              <br>
-              <strong>Anurag Ghosh</strong>, C.V. Jawahar, <em>National Conference on Computer Vision, Pattern
-                Recognition, Image Processing and Graphics <strong>(NCVPRIPG)</strong></em>, 2017
-              [<a href="http://cvit.iiit.ac.in/research/projects/cvit-projects/smart-tennistv">Paper</a>]
-              <br>
-              <strong style="color: #DC143C;">(Best Paper Award)</strong>
-
-
-            </td>
-          </tr>
-
-
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/signals-www19.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Signals Matter: Understanding
-                Popularity and Impact on Stack Overflow</p>
-              Arpit Merchant, Daksh Shah, Gurpreet Singh Bhatia, <strong>Anurag Ghosh</strong>, Ponnurangam Kumaraguru
-              <br>
-              <em>The Web Conference <strong>(WWW)</strong></em>, 2019
-              [<a href="https://www.arpitmerchant.com/docs/Signals_Matter.pdf">Paper</a>]
-              <br>
-              <p></p>
-
-            </td>
-          </tr>
-
-
-
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn/images/heritage-eccvw16.png" alt="project image"
-                style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <p style="font-family: 'Roboto';font-size: 1.3em; font-weight: bold;">Dynamic narratives for heritage tour
-              </p>
-              <strong>Anurag Ghosh &starf;</strong>, Yash Patel &starf;, Mohak Sukhwani, C.V. Jawahar
-              <br>
-              <em>VisArt Workshop, Europen Conference on Computer Vision <strong>(ECCV)</strong></em>, 2016
-              [<a href="https://anuragxel.github.io/tn/assets/dynamic-narratives-heritage-tour-eccvw16.pdf">Paper</a>]
-              <br>
-
-
-              <p></p>
-
-            </td>
-          </tr>
-
-        </table>
-
-        <!-- Table for Press Stuff -->
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;display:block;">
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h1>Press</h1>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h4>Automated Driver License Testing</h4>
-            </td>
-          </tr>
-          <tr style="width: 100%; display: block;">
-            <td style="padding:1%;width:25%;vertical-align:middle">
-              <a href="https://news.microsoft.com/en-in/features/microsoft-ai-automates-drivers-license-test-india/">
-                <img src="/tn/images/press/microsoft.PNG" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle">
-              <a href="https://techcrunch.com/2019/10/31/driving-test-india-microsoft-hams/">
-                <img src="/tn/images/press/techcrunch.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:65%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle">
-              <a href="https://gizmodo.com/microsoft-made-a-smartphone-app-that-can-administer-dri-1839467075">
-                <img src="/tn/images/press/gizmodo.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle">
+          <div class="paper-card__sub-pub">
+            <strong>Smartphone-based Driver License Testing</strong><br>
+            <strong>Anurag Ghosh</strong>, Vijay Lingam, Ishit Mehta, Akshay Nambi, Venkat Padmanabhan, Satish
+            Sangameswaran<br>
+            <em>Conference on Embedded Networked Sensor Systems <strong>(SenSys Demo)</strong></em>, 2019
+            <div class="paper-card__links">
               <a
-                href="https://www.hindustantimes.com/tech/microsoft-s-ai-based-hams-automates-driver-license-tests-in-india/story-X4KtK95RxVGtI3NfoDiSRI.html">
-                <img src="/tn/images/press/ht.webp" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-          </tr>
-          <tr style="width: 100%; display: block;">
-            <td style="padding:1%;width:25%;vertical-align:middle;min-width:120px">
+                href="https://www.microsoft.com/en-us/research/publication/alt-towards-automating-driver-license-testing-using-smartphones/">Paper</a>
+            </div>
+          </div>
+
+          <div class="paper-card__sub-pub">
+            <strong>ALT: Towards Automating Driver License Testing using Smartphones</strong><br>
+            Akshay Nambi, Ishit Mehta, <strong>Anurag Ghosh</strong>, Vijay Lingam, Venkat Padmanabhan<br>
+            <em>Conference on Embedded Networked Sensor Systems <strong>(SenSys)</strong></em>, 2019
+            <div class="paper-card__links">
               <a
-                href="https://timesofindia.indiatimes.com/business/microsoft-automates-driving-license-tests/articleshow/71903523.cms">
-                <img src="/tn/images/press/toi.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle;min-width:120px">
-              <a
-                href="https://www.digit.in/news/car-tech/how-microsoft-has-quietly-started-automating-driving-tests-in-india-using-ai-50854.html">
-                <img src="/tn/images/press/digit.PNG" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle">
-              <a
-                href="https://www.autocarpro.in/news-national/microsoft-aitech-automates-driver-license-tests-in-india-44499">
-                <img src="/tn/images/press/autocarpro.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:90%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle">
-              <a
-                href="https://auto.economictimes.indiatimes.com/news/auto-technology/microsofts-hams-automates-driver-license-tests-in-india/71816536">
-                <img src="/tn/images/press/et-auto.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:60%; margin:0 auto;">
-              </a>
-            </td>
-          </tr>
+                href="https://www.microsoft.com/en-us/research/publication/alt-towards-automating-driver-license-testing-using-smartphones/">Paper</a>
+            </div>
+          </div>
+        </div>
+      </article>
 
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <p>
-              <h4>Badminton Analytics</h4>
-              </p>
-            </td>
-          </tr>
-          <tr style="width: 100%; display: block;">
-            <td style="padding:1%;width:25%;vertical-align:middle;min-width:120px">
-              <a href="http://blogs.iiit.ac.in/pbl/">
-                <img src="/tn/images/press/iiit.PNG" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:90%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle;min-width:120px">
-              <a
-                href="https://timesofindia.indiatimes.com/city/hyderabad/ai-makes-inroads-into-badminton/articleshow/68294464.cms">
-                <img src="/tn/images/press/toi.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:1%;width:25%;vertical-align:middle;min-width:120px">
-              <a
-                href="https://www.thehindu.com/news/cities/Hyderabad/iiit-h-successfully-tests-a-prototype-of-badminton-analytics/article26460344.ece">
-                <img src="/tn/images/press/the-hindu.png" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <a
-                href="https://www.thenewsminute.com/article/ai-sports-how-iiit-hyd-s-research-making-inroads-broadcasting-studios-98046">
-                <img src="/tn/images/press/newsminute.PNG" alt="project image"
-                  style="display: block; width:auto; height:auto; max-width:100%; margin:0 auto;">
-              </a>
-            </td>
-          </tr>
+      <!-- MS Thesis: Analyzing Racket Sports -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/fednadal-thesis.png" alt="Racket Sports Analysis — Federer, Nadal, Djokovic">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Analyzing Racket Sports From Broadcast Videos</h3>
+          <p class="paper-card__authors">Anurag Ghosh</p>
+          <p class="paper-card__venue">IIIT Hyderabad (Master's Thesis), 2019</p>
+          <div class="paper-card__links">
+            <a
+              href="http://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/746">Thesis</a>
+          </div>
+          <p class="paper-card__desc">Consolidates our sports analytics work, and additionally includes tennis
+            analytics for comparing the long-term playing styles and attributes of Federer, Nadal, and Djokovic from
+            broadcast footage.</p>
+        </div>
+      </article>
 
-        </table>
+      <!-- Towards Real-Time Analysis of Broadcast Badminton Videos -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/badminton-wacv18.png" alt="Broadcast Badminton Analysis">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Towards Structured Analysis of Broadcast Badminton Videos</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, Suriya Singh, C.V. Jawahar</p>
+          <p class="paper-card__venue">Winter Conference On Applications of Computer Vision <strong>(WACV)</strong>,
+            2018</p>
+          <p class="paper-card__impact">Piloted with ESPN/Star Sports at Premier Badminton League, watched by tens of
+            millions in South East Asia.</p>
+          <div class="paper-card__links">
+            <a href="http://cvit.iiit.ac.in/research/projects/cvit-projects/badminton-analytics">Paper</a>
+            <a href="https://arxiv.org/abs/2308.12199">Real-Time Deployment</a>
+          </div>
+          <p class="paper-card__desc">An end-to-end framework for real-time player movement analysis from live broadcast
+            badminton videos using only visual cues — computing on-court distance, speed, and heatmaps without
+            multi-modal sensors.</p>
+        </div>
+      </article>
 
+      <!-- SmartTennisTV -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/smarttennistv-ncvpripg17.jpg" alt="SmartTennisTV">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">SmartTennisTV: An Automatic Indexing System for Tennis</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh</strong>, C.V. Jawahar</p>
+          <p class="paper-card__venue">National Conference on Computer Vision, Pattern Recognition, Image Processing and
+            Graphics <strong>(NCVPRIPG)</strong>, 2017</p>
+          <div class="paper-card__links">
+            <a href="http://cvit.iiit.ac.in/research/projects/cvit-projects/smart-tennistv">Paper</a>
+          </div>
+          <p class="paper-card__award">(Best Paper Award)</p>
+          <p class="paper-card__desc">An automatic system for indexing and retrieving key events from broadcast tennis
+            videos, enabling structured query-based access to match highlights.</p>
+        </div>
+      </article>
 
-        <!-- Table for Cool Wonderful Stuff -->
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;display:block;">
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h2>Interesting/Inspiring Links</h2>
-            </td>
-          </tr>
+      <!-- Signals Matter -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/signals-www19.png" alt="Signals Matter">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Signals Matter: Understanding Popularity and Impact on Stack Overflow</h3>
+          <p class="paper-card__authors">Arpit Merchant, Daksh Shah, Gurpreet Singh Bhatia, <strong>Anurag
+              Ghosh</strong>, Ponnurangam Kumaraguru</p>
+          <p class="paper-card__venue">The Web Conference <strong>(WWW)</strong>, 2019</p>
+          <div class="paper-card__links">
+            <a href="https://www.arpitmerchant.com/docs/Signals_Matter.pdf">Paper</a>
+          </div>
+        </div>
+      </article>
 
+      <!-- Dynamic Narratives for Heritage Tour -->
+      <article class="paper-card">
+        <div class="paper-card__thumb">
+          <img src="tn/images/heritage-eccvw16.png" alt="Dynamic Narratives Heritage Tour">
+        </div>
+        <div class="paper-card__body">
+          <h3 class="paper-card__title">Dynamic narratives for heritage tour</h3>
+          <p class="paper-card__authors"><strong>Anurag Ghosh &#9733;</strong>, Yash Patel &#9733;, Mohak Sukhwani, C.V.
+            Jawahar</p>
+          <p class="paper-card__venue">VisArt Workshop, Europen Conference on Computer Vision <strong>(ECCV)</strong>,
+            2016</p>
+          <div class="paper-card__links">
+            <a href="https://anuragxel.github.io/tn/assets/dynamic-narratives-heritage-tour-eccvw16.pdf">Paper</a>
+          </div>
+        </div>
+      </article>
 
+    </section>
 
+    <!-- ============================================
+         PRESS
+         ============================================ -->
+    <section class="section" id="press">
+      <h2 class="section-title">Press</h2>
 
-          <br>
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3>
-                <a href="https://www.youtube.com/watch?v=xqd1L6ubP64">Making computer vision systems that work: Boujou,
-                  Kinect, HoloLens</a>, Andrew Fitzgibbon
-              </h3>
-            </td>
-          </tr>
+      <div class="press__category">
+        <h3 class="press__category-title">Automated Driver License Testing</h3>
+        <div class="press__grid">
+          <a class="press__logo"
+            href="https://news.microsoft.com/en-in/features/microsoft-ai-automates-drivers-license-test-india/">
+            <img src="tn/images/press/microsoft.PNG" alt="Microsoft">
+          </a>
+          <a class="press__logo" href="https://techcrunch.com/2019/10/31/driving-test-india-microsoft-hams/">
+            <img src="tn/images/press/techcrunch.png" alt="TechCrunch">
+          </a>
+          <a class="press__logo"
+            href="https://gizmodo.com/microsoft-made-a-smartphone-app-that-can-administer-dri-1839467075">
+            <img src="tn/images/press/gizmodo.png" alt="Gizmodo">
+          </a>
+          <a class="press__logo"
+            href="https://www.hindustantimes.com/tech/microsoft-s-ai-based-hams-automates-driver-license-tests-in-india/story-X4KtK95RxVGtI3NfoDiSRI.html">
+            <img src="tn/images/press/ht.webp" alt="Hindustan Times">
+          </a>
+          <a class="press__logo"
+            href="https://timesofindia.indiatimes.com/business/microsoft-automates-driving-license-tests/articleshow/71903523.cms">
+            <img src="tn/images/press/toi.png" alt="Times of India">
+          </a>
+          <a class="press__logo"
+            href="https://www.digit.in/news/car-tech/how-microsoft-has-quietly-started-automating-driving-tests-in-india-using-ai-50854.html">
+            <img src="tn/images/press/digit.PNG" alt="Digit">
+          </a>
+          <a class="press__logo"
+            href="https://www.autocarpro.in/news-national/microsoft-aitech-automates-driver-license-tests-in-india-44499">
+            <img src="tn/images/press/autocarpro.png" alt="Autocar Professional">
+          </a>
+          <a class="press__logo"
+            href="https://auto.economictimes.indiatimes.com/news/auto-technology/microsofts-hams-automates-driver-license-tests-in-india/71816536">
+            <img src="tn/images/press/et-auto.png" alt="ET Auto">
+          </a>
+        </div>
+      </div>
 
-          <br>
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3>
-                <a href="https://writings.stephenwolfram.com/2017/05/a-new-kind-of-science-a-15-year-view/">A New Kind
-                  of Science - A 15 Year View</a>, Stephen Wolfram
-              </h3>
-            </td>
-          </tr>
+      <div class="press__category">
+        <h3 class="press__category-title">Badminton Analytics</h3>
+        <div class="press__grid">
+          <a class="press__logo" href="http://blogs.iiit.ac.in/pbl/">
+            <img src="tn/images/press/iiit.PNG" alt="IIIT Hyderabad">
+          </a>
+          <a class="press__logo"
+            href="https://timesofindia.indiatimes.com/city/hyderabad/ai-makes-inroads-into-badminton/articleshow/68294464.cms">
+            <img src="tn/images/press/toi.png" alt="Times of India">
+          </a>
+          <a class="press__logo"
+            href="https://www.thehindu.com/news/cities/Hyderabad/iiit-h-successfully-tests-a-prototype-of-badminton-analytics/article26460344.ece">
+            <img src="tn/images/press/the-hindu.png" alt="The Hindu">
+          </a>
+          <a class="press__logo"
+            href="https://www.thenewsminute.com/article/ai-sports-how-iiit-hyd-s-research-making-inroads-broadcasting-studios-98046">
+            <img src="tn/images/press/newsminute.PNG" alt="The News Minute">
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <br>
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3><a href="https://www.youtube.com/watch?v=1c8i5SABqwU">How I ran the length of every street in
-                  Pittsburgh: PAC TOM</a>, Tom Murphy VII</h3>
-            </td>
-          </tr>
+    <!-- ============================================
+         INTERESTING / INSPIRING LINKS
+         ============================================ -->
+    <section class="section" id="links">
+      <h2 class="section-title">Interesting/Inspiring Links</h2>
+      <ul class="links__list">
+        <li>
+          <a href="https://www.youtube.com/watch?v=xqd1L6ubP64">Making computer vision systems that work: Boujou,
+            Kinect, HoloLens</a>
+          <span class="links__author"> — Andrew Fitzgibbon</span>
+        </li>
+        <li>
+          <a href="https://writings.stephenwolfram.com/2017/05/a-new-kind-of-science-a-15-year-view/">A New Kind
+            of Science - A 15 Year View</a>
+          <span class="links__author"> — Stephen Wolfram</span>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=1c8i5SABqwU">How I ran the length of every street in
+            Pittsburgh: PAC TOM</a>
+          <span class="links__author"> — Tom Murphy VII</span>
+        </li>
+        <li>
+          <a href="https://www.csail.mit.edu/node/6456">Frugal Innovations for a Developing World</a>
+          <span class="links__author"> — Bill Thies</span>
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/2011.02455v1">Hints and Principles for Computer System Design</a>
+          <span class="links__author"> — Butler Lampson</span>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=h22b0yJvbKw">The Advent of Actionable Tennis Analytics</a>
+          <span class="links__author"> — Jeff Sackmann</span>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=vsTTXYxydOE">Automatic Pool Stick vs Strangers</a>
+          <span class="links__author"> — Shane Wighton</span>
+        </li>
+      </ul>
+    </section>
 
+  </main>
 
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3><a href="https://www.csail.mit.edu/node/6456">Frugal Innovations for a Developing World</a>, Bill
-                Thies</h3>
-            </td>
-          </tr>
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__quote">
+        I must study Politicks and War that my sons may have liberty to study Mathematicks and Philosophy. My
+        sons ought to study Mathematicks and Philosophy, Geography, Natural History, Naval Architecture,
+        Navigation, Commerce and Agriculture, in order to give their children a right to study Painting, Poetry,
+        Musick, Architecture, Statuary, Tapestry and Porcelaine. — John Adams, American Founding Father
+      </p>
+    </div>
+  </footer>
 
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3><a href="https://arxiv.org/abs/2011.02455v1">Hints and Principles for Computer System Design</a>,
-                Butler Lampson</h3>
-            </td>
-          </tr>
+  <!-- Theme Toggle Script -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+      const stored = localStorage.getItem('theme');
 
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3><a href="https://www.youtube.com/watch?v=h22b0yJvbKw">The Advent of Actionable Tennis Analytics</a>,
-                Jeff Sackmann</h3>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:100%;vertical-align:middle">
-              <h3><a href="https://www.youtube.com/watch?v=vsTTXYxydOE">Automatic Pool Stick vs Strangers</a>, Shane
-                Wighton</h3>
-            </td>
-          </tr>
+      if (stored) {
+        root.setAttribute('data-theme', stored);
+      }
 
-        </table>
+      toggle.addEventListener('click', function () {
+        const current = root.getAttribute('data-theme');
+        const isDark = current === 'dark' ||
+          (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const next = isDark ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
 
-        <br>
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:0px">
-              <p style="text-align:center;font-size:small;">
-                I must study Politicks and War that my sons may have liberty to study Mathematicks and Philosophy. My
-                sons ought to study Mathematicks and Philosophy, Geography, natural History, Naval Architecture,
-                navigation, Commerce and Agriculture, in order to give their Children a right to study Painting, Poetry,
-                Musick, Architecture, Statuary, Tapestry and Porcelaine. - John Adams, American Founding Father
-              </p>
-            </td>
-          </tr>
-        </table>
-
-        <br>
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's
-                  website</a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
 </body>
 
 </html>
