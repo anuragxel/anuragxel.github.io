@@ -608,6 +608,18 @@ a:focus {
   color: var(--accent-hover);
 }
 
+.hero__link--primary {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+
+.hero__link--primary:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  color: #fff !important;
+}
+
 .hero__photo {
   flex-shrink: 0;
   width: 220px;
