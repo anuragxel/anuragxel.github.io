@@ -14,11 +14,35 @@
 
 <body>
 
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-    <span class="icon-moon">🌙</span>
-    <span class="icon-sun">☀️</span>
-  </button>
+  <!-- Top Controls -->
+  <div class="top-controls" id="top-controls">
+    <button class="top-btn nav-toggle" id="nav-toggle" aria-label="Navigate sections">⋯</button>
+    <button class="top-btn theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+      <span class="icon-moon">🌙</span>
+      <span class="icon-sun">☀️</span>
+    </button>
+    <div class="nav-dropdown" id="nav-dropdown">
+      <a class="nav-dropdown__link" href="#top" data-section="top">Home</a>
+      <a class="nav-dropdown__link" href="#research" data-section="research">Research</a>
+      <a class="nav-dropdown__link" href="#press" data-section="press">Press</a>
+      <a class="nav-dropdown__link" href="#links" data-section="links">Inspiring Links</a>
+      <div class="nav-dropdown__divider"></div>
+      <button class="nav-dropdown__hint" id="cmd-k-hint">Search… <kbd>⌘K</kbd></button>
+    </div>
+  </div>
+
+  <!-- Command Palette -->
+  <div class="cmd-palette-overlay" id="cmd-overlay">
+    <div class="cmd-palette" id="cmd-palette">
+      <div class="cmd-palette__input-wrap">
+        <span class="cmd-palette__icon">🔍</span>
+        <input class="cmd-palette__input" id="cmd-input" type="text" placeholder="Search papers, tags, sections…"
+          autocomplete="off">
+        <span class="cmd-palette__kbd">ESC</span>
+      </div>
+      <div class="cmd-palette__results" id="cmd-results"></div>
+    </div>
+  </div>
 
   <main class="container">
 
@@ -99,8 +123,13 @@
         <button class="filter-tag" data-filter="datasets">Datasets & Benchmarks</button>
       </div>
 
+      <p class="research__search-hint" id="search-hint">
+        💡 Press <kbd>⌘K</kbd> or <kbd>Ctrl+K</kbd> to quickly search my work (or just click on the tags!)
+      </p>
+
       <!-- RAD-LAD -->
-      <article class="paper-card" data-tags="featured, planning,real-time,language">
+      <article class="paper-card" data-tags="featured, planning,real-time,language"
+        data-keywords="LLM VLA autonomous driving rules grounded planner action nuPlan hybrid motion planning closed-loop latency language-action explainable decision-making self-driving car robot foundation model">
         <div class="paper-card__thumb">
           <video autoplay loop muted playsinline>
             <source src="tn/images/rad-lad-demo.mp4" type="video/mp4">
@@ -122,7 +151,8 @@
       </article>
 
       <!-- ROADWork -->
-      <article class="paper-card" data-tags="featured, perception,planning,localization,datasets,language">
+      <article class="paper-card" data-tags="featured, perception,planning,localization,datasets,language"
+        data-keywords="construction work zone dataset benchmark ICCV autonomous driving long-tail foundation model VLM open-vocabulary detection segmentation sign reading navigation drivable path self-driving">
         <div class="paper-card__thumb">
           <img src="tn/images/roadwork.png" alt="ROADWork Dataset">
         </div>
@@ -146,7 +176,8 @@
       </article>
 
       <!-- AerialMegaDepth -->
-      <article class="paper-card" data-tags="3d-geometry,localization,datasets">
+      <article class="paper-card" data-tags="3d-geometry,localization,datasets"
+        data-keywords="depth estimation aerial ground drone cross-view CVPR 3D reconstruction mesh rendering SfM DUSt3R novel view synthesis Google Earth MegaDepth camera pose viewpoint localization city urban">
         <div class="paper-card__thumb">
           <img src="tn/images/aerial_megadepth_cvpr25.jpg" alt="AerialMegaDepth">
         </div>
@@ -167,7 +198,8 @@
       </article>
 
       <!-- Saliency Guided Image Warping -->
-      <article class="paper-card" data-tags="perception,real-time">
+      <article class="paper-card" data-tags="perception,real-time"
+        data-keywords="domain adaptation unsupervised warping saliency weather bad WACV night rain fog snow segmentation detection BDD100K Cityscapes ACDC robustness adverse conditions self-driving">
         <div class="paper-card__thumb">
           <img src="tn/images/da-badweather.png" alt="Saliency Guided Image Warping">
         </div>
@@ -189,7 +221,8 @@
       </article>
 
       <!-- Two-Plane Perspective Prior -->
-      <article class="paper-card" data-tags="featured,3d-geometry,perception,real-time">
+      <article class="paper-card" data-tags="featured,3d-geometry,perception,real-time"
+        data-keywords="object detection small far-away perspective geometry CVPR image resampling zoom autonomous navigation traffic camera city scale pedestrian vehicle streaming efficient">
         <div class="paper-card__thumb">
           <img src="tn/images/two-plane-banner.png" alt="Two-Plane Perspective Prior">
         </div>
@@ -212,7 +245,8 @@
       </article>
 
       <!-- Chanakya -->
-      <article class="paper-card" data-tags="featured,perception,planning,real-time">
+      <article class="paper-card" data-tags="featured,perception,planning,real-time"
+        data-keywords="reinforcement learning RL adaptive runtime streaming NeurIPS edge compute latency resolution model selection GPU resource scheduling dynamic execution policy autonomous systems">
         <div class="paper-card__thumb">
           <img src="tn/images/perception-banner.png" alt="Chanakya">
         </div>
@@ -235,7 +269,8 @@
       </article>
 
       <!-- REACT -->
-      <article class="paper-card" data-tags="perception,real-time">
+      <article class="paper-card" data-tags="perception,real-time"
+        data-keywords="edge cloud video analytics streaming IoT fusion asynchronous drone DNN mobile computing bandwidth GPU object detection latency IoTDI distributed systems">
         <div class="paper-card__thumb">
           <img src="tn/images/cloud-edge-banner.png" alt="REACT">
         </div>
@@ -257,7 +292,8 @@
       </article>
 
       <!-- Holistic Energy Awareness for Intelligent Drones -->
-      <article class="paper-card" data-tags="real-time,deployed">
+      <article class="paper-card" data-tags="real-time,deployed"
+        data-keywords="drone UAV energy management flight compute communication IoT BuildSys battery optimization intelligent aerial robot sensor networks deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/drone-buildsys21.png" alt="Holistic Energy Awareness for Intelligent Drones">
         </div>
@@ -280,7 +316,8 @@
       </article>
 
       <!-- Smartphone-based Driver License Testing -->
-      <article class="paper-card" data-tags="featured,localization,3d-geometry,perception,deployed">
+      <article class="paper-card" data-tags="featured,localization,3d-geometry,perception,deployed"
+        data-keywords="HAMS driver license testing India Satya Nadella Microsoft SfM SLAM IMU smartphone 100K users deployed nationwide SenSys monocular 3D trajectory driving test automated government scale infrastructure">
         <div class="paper-card__thumb">
           <img src="tn/images/hams-demo.png" alt="HAMS Driver License Testing">
         </div>
@@ -331,7 +368,8 @@
       </article>
 
       <!-- MS Thesis: Analyzing Racket Sports -->
-      <article class="paper-card" data-tags="perception,deployed">
+      <article class="paper-card" data-tags="perception,deployed"
+        data-keywords="tennis badminton racket sports broadcast video tracking court Federer Nadal Djokovic thesis IIIT Hyderabad geometry court-mapping shot classification playing style analysis monocular">
         <div class="paper-card__thumb">
           <img src="tn/images/fednadal-thesis.png" alt="Racket Sports Analysis — Federer, Nadal, Djokovic">
         </div>
@@ -350,7 +388,8 @@
       </article>
 
       <!-- Towards Real-Time Analysis of Broadcast Badminton Videos -->
-      <article class="paper-card" data-tags="featured,perception,datasets,deployed">
+      <article class="paper-card" data-tags="featured,perception,datasets,deployed"
+        data-keywords="badminton ESPN Star Sports broadcast video tracking speed heatmap WACV Premier Badminton League PBL live real-time player analysis distance court commentator sports analytics South East Asia">
         <div class="paper-card__thumb">
           <img src="tn/images/badminton-wacv18.png" alt="Broadcast Badminton Analysis">
         </div>
@@ -372,7 +411,8 @@
       </article>
 
       <!-- SmartTennisTV -->
-      <article class="paper-card" data-tags="perception,deployed">
+      <article class="paper-card" data-tags="perception,deployed"
+        data-keywords="tennis broadcast indexing retrieval highlights best paper award NCVPRIPG sports video automatic query-based match event detection">
         <div class="paper-card__thumb">
           <img src="tn/images/smarttennistv-ncvpripg17.jpg" alt="SmartTennisTV">
         </div>
@@ -391,7 +431,8 @@
       </article>
 
       <!-- Signals Matter -->
-      <article class="paper-card" data-tags="">
+      <article class="paper-card" data-tags=""
+        data-keywords="Stack Overflow social signals popularity impact WWW web conference software engineering community Q&A">
         <div class="paper-card__thumb">
           <img src="tn/images/signals-www19.png" alt="Signals Matter">
         </div>
@@ -407,7 +448,8 @@
       </article>
 
       <!-- Dynamic Narratives for Heritage Tour -->
-      <article class="paper-card" data-tags="3d-geometry,perception,language">
+      <article class="paper-card" data-tags="3d-geometry,perception,language"
+        data-keywords="heritage tour storytelling narrative egocentric captioning ECCV workshop VR AR image understanding visual description monument cultural site">
         <div class="paper-card__thumb">
           <img src="tn/images/heritage-eccvw16.png" alt="Dynamic Narratives Heritage Tour">
         </div>
@@ -545,168 +587,20 @@
         Navigation, Commerce and Agriculture, in order to give their children a right to study Painting, Poetry,
         Musick, Architecture, Statuary, Tapestry and Porcelaine. — John Adams, American Founding Father
       </p>
+      <p class="footer__ack">Co-crafted by <span id="footer-anurag" style="cursor: pointer;">Anurag</span> & <a
+          href="https://claude.ai" target="_blank" style="color: inherit; text-decoration: underline;">Claude</a> ✦</p>
     </div>
   </footer>
+  <script src="main.js" defer></script>
 
-  <!-- Theme Toggle Script -->
-  <script>
-    (function () {
-      const toggle = document.getElementById('theme-toggle');
-      const root = document.documentElement;
-      const stored = localStorage.getItem('theme');
-
-      if (stored) {
-        root.setAttribute('data-theme', stored);
-      }
-
-      toggle.addEventListener('click', function () {
-        const current = root.getAttribute('data-theme');
-        const isDark = current === 'dark' ||
-          (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        const next = isDark ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    })();
-  </script>
-
-  <!-- Research Filter Script -->
-  <script>
-    (function () {
-      const filters = document.getElementById('research-filters');
-      const cards = document.querySelectorAll('.paper-card[data-tags]');
-      const buttons = filters.querySelectorAll('.filter-tag');
-
-      function applyFilter(filter) {
-        cards.forEach(card => {
-          if (filter === 'all') {
-            card.classList.remove('paper-card--hidden');
-          } else {
-            const tags = card.dataset.tags.split(',').map(t => t.trim());
-            if (tags.includes(filter)) {
-              card.classList.remove('paper-card--hidden');
-            } else {
-              card.classList.add('paper-card--hidden');
-            }
-          }
-        });
-      }
-
-      filters.addEventListener('click', function (e) {
-        const btn = e.target.closest('.filter-tag');
-        if (!btn) return;
-
-        buttons.forEach(b => b.classList.remove('filter-tag--active'));
-        btn.classList.add('filter-tag--active');
-        applyFilter(btn.dataset.filter);
-      });
-
-      // Initialize filter based on default active button
-      const activeBtn = filters.querySelector('.filter-tag--active');
-      if (activeBtn) {
-        applyFilter(activeBtn.dataset.filter);
-      }
-    })();
-  </script>
-
-  <!-- Sidebar Observer Script -->
-  <script>
-    (function () {
-      var research = document.getElementById('research');
-      var filters = document.getElementById('research-filters');
-      var mql = window.matchMedia('(min-width: 1280px)');
-      var ticking = false;
-
-      function check() {
-        if (!mql.matches) {
-          filters.classList.remove('sidebar-visible');
-          return;
-        }
-        var rect = research.getBoundingClientRect();
-        // Show only when research top is at/above viewport (scrolled into it)
-        // AND research bottom is still below 30% of viewport (haven't scrolled past)
-        var show = rect.top <= 80 && rect.bottom > window.innerHeight * 0.3;
-        filters.classList.toggle('sidebar-visible', show);
-      }
-
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          requestAnimationFrame(function () { check(); ticking = false; });
-          ticking = true;
-        }
-      }, { passive: true });
-
-      mql.addEventListener('change', check);
-      check();
-    })();
-  </script>
-
-  <!-- Per-Paper Tag Pills Script -->
-  <script>
-    (function () {
-      var tagMeta = {
-        'perception': { label: 'Perception', bg: '#eff6ff', c: '#2563eb', b: '#bfdbfe', dBg: 'rgba(37,99,235,0.15)', dC: '#93c5fd' },
-        'planning': { label: 'Planning', bg: '#f5f3ff', c: '#7c3aed', b: '#ddd6fe', dBg: 'rgba(124,58,237,0.15)', dC: '#c4b5fd' },
-        '3d-geometry': { label: '3D & Geometry', bg: '#ecfeff', c: '#0891b2', b: '#a5f3fc', dBg: 'rgba(8,145,178,0.15)', dC: '#67e8f9' },
-        'localization': { label: 'Localization', bg: '#ecfdf5', c: '#059669', b: '#a7f3d0', dBg: 'rgba(5,150,105,0.15)', dC: '#6ee7b7' },
-        'language': { label: 'Language', bg: '#fffbeb', c: '#b45309', b: '#fde68a', dBg: 'rgba(217,119,6,0.15)', dC: '#fcd34d' },
-        'real-time': { label: 'Real-Time', bg: '#fef2f2', c: '#dc2626', b: '#fecaca', dBg: 'rgba(220,38,38,0.15)', dC: '#fca5a5' },
-        'deployed': { label: 'Deployed', bg: '#fdf2f8', c: '#db2777', b: '#fbcfe8', dBg: 'rgba(219,39,119,0.15)', dC: '#f9a8d4' },
-        'datasets': { label: 'Datasets', bg: '#f0fdfa', c: '#0d9488', b: '#99f6e4', dBg: 'rgba(13,148,136,0.15)', dC: '#5eead4' }
-      };
-
-      function isDark() {
-        var t = document.documentElement.getAttribute('data-theme');
-        if (t === 'dark') return true;
-        if (t === 'light') return false;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
-
-      function applyColors() {
-        var dark = isDark();
-        document.querySelectorAll('.paper-card__tag').forEach(function (el) {
-          var m = tagMeta[el.dataset.tagType];
-          if (!m) return;
-          el.style.setProperty('--tag-bg', dark ? m.dBg : m.bg);
-          el.style.setProperty('--tag-color', dark ? m.dC : m.c);
-          el.style.setProperty('--tag-border', dark ? 'transparent' : m.b);
-        });
-      }
-
-      // Generate tag pills
-      document.querySelectorAll('.paper-card[data-tags]').forEach(function (card) {
-        var tags = card.dataset.tags.split(',').map(function (t) { return t.trim(); })
-          .filter(function (t) { return t && t !== 'featured' && tagMeta[t]; });
-        if (!tags.length) return;
-
-        var container = document.createElement('div');
-        container.className = 'paper-card__tags';
-        tags.forEach(function (tag) {
-          var el = document.createElement('span');
-          el.className = 'paper-card__tag';
-          el.dataset.tagType = tag;
-          el.textContent = tagMeta[tag].label;
-          el.style.cursor = 'pointer';
-          el.addEventListener('click', function (e) {
-            e.stopPropagation();
-            // Find and click the matching global filter button
-            var filterBtn = document.querySelector('.filter-tag[data-filter="' + tag + '"]');
-            if (filterBtn) filterBtn.click();
-            // Scroll to the top of the research section
-            document.getElementById('research').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-          container.appendChild(el);
-        });
-        card.querySelector('.paper-card__body').appendChild(container);
-      });
-
-      applyColors();
-
-      // Re-apply on theme changes
-      new MutationObserver(applyColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyColors);
-    })();
-  </script>
+  <!-- Easter Egg Popup -->
+  <div class="easter-egg-overlay" id="easter-egg-overlay">
+    <div class="easter-egg-popup" id="easter-egg-popup">
+      <button class="easter-egg-close" id="easter-egg-close">&times;</button>
+      <iframe id="easter-egg-iframe" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
+    </div>
+  </div>
 
 </body>
 
