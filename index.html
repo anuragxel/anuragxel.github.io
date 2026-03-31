@@ -91,8 +91,19 @@
         learning, robotics and, systems.
       </p>
 
+      <div class="research__filters" id="research-filters">
+        <button class="filter-tag filter-tag--active" data-filter="all">All</button>
+        <button class="filter-tag" data-filter="perception">Perception</button>
+        <button class="filter-tag" data-filter="planning">Planning</button>
+        <button class="filter-tag" data-filter="3d-geometry">3D & Geometry</button>
+        <button class="filter-tag" data-filter="real-time">Real-Time & Efficient</button>
+        <button class="filter-tag" data-filter="deployed">Deployed at Scale</button>
+        <button class="filter-tag" data-filter="language">Language</button>
+        <button class="filter-tag" data-filter="datasets">Datasets & Benchmarks</button>
+      </div>
+
       <!-- RAD-LAD -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="planning,real-time,language">
         <div class="paper-card__thumb">
           <video autoplay loop muted playsinline>
             <source src="tn/images/rad-lad-demo.mp4" type="video/mp4">
@@ -114,7 +125,7 @@
       </article>
 
       <!-- ROADWork -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,planning,datasets,language">
         <div class="paper-card__thumb">
           <img src="tn/images/roadwork.png" alt="ROADWork Dataset">
         </div>
@@ -137,7 +148,7 @@
       </article>
 
       <!-- AerialMegaDepth -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="3d-geometry,datasets">
         <div class="paper-card__thumb">
           <img src="tn/images/aerial_megadepth_cvpr25.jpg" alt="AerialMegaDepth">
         </div>
@@ -158,7 +169,7 @@
       </article>
 
       <!-- Saliency Guided Image Warping -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,real-time">
         <div class="paper-card__thumb">
           <img src="tn/images/da-badweather.png" alt="Saliency Guided Image Warping">
         </div>
@@ -181,7 +192,7 @@
       </article>
 
       <!-- Two-Plane Perspective Prior -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="3d-geometry,perception,real-time">
         <div class="paper-card__thumb">
           <img src="tn/images/two-plane-banner.png" alt="Two-Plane Perspective Prior">
         </div>
@@ -204,7 +215,7 @@
       </article>
 
       <!-- Chanakya -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,planning,real-time">
         <div class="paper-card__thumb">
           <img src="tn/images/perception-banner.png" alt="Chanakya">
         </div>
@@ -227,7 +238,7 @@
       </article>
 
       <!-- REACT -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,real-time">
         <div class="paper-card__thumb">
           <img src="tn/images/cloud-edge-banner.png" alt="REACT">
         </div>
@@ -249,7 +260,7 @@
       </article>
 
       <!-- Holistic Energy Awareness for Intelligent Drones -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="real-time,deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/drone-buildsys21.png" alt="Holistic Energy Awareness for Intelligent Drones">
         </div>
@@ -272,7 +283,7 @@
       </article>
 
       <!-- Smartphone-based Driver License Testing -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="3d-geometry,perception,deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/hams-demo.png" alt="HAMS Driver License Testing">
         </div>
@@ -324,7 +335,7 @@
       </article>
 
       <!-- MS Thesis: Analyzing Racket Sports -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/fednadal-thesis.png" alt="Racket Sports Analysis — Federer, Nadal, Djokovic">
         </div>
@@ -343,7 +354,7 @@
       </article>
 
       <!-- Towards Real-Time Analysis of Broadcast Badminton Videos -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,datasets,deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/badminton-wacv18.png" alt="Broadcast Badminton Analysis">
         </div>
@@ -365,7 +376,7 @@
       </article>
 
       <!-- SmartTennisTV -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="perception,deployed">
         <div class="paper-card__thumb">
           <img src="tn/images/smarttennistv-ncvpripg17.jpg" alt="SmartTennisTV">
         </div>
@@ -384,7 +395,7 @@
       </article>
 
       <!-- Signals Matter -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="">
         <div class="paper-card__thumb">
           <img src="tn/images/signals-www19.png" alt="Signals Matter">
         </div>
@@ -400,7 +411,7 @@
       </article>
 
       <!-- Dynamic Narratives for Heritage Tour -->
-      <article class="paper-card">
+      <article class="paper-card" data-tags="3d-geometry,perception,language">
         <div class="paper-card__thumb">
           <img src="tn/images/heritage-eccvw16.png" alt="Dynamic Narratives Heritage Tour">
         </div>
@@ -413,6 +424,8 @@
           <div class="paper-card__links">
             <a href="https://anuragxel.github.io/tn/assets/dynamic-narratives-heritage-tour-eccvw16.pdf">Paper</a>
           </div>
+          <p class="paper-card__desc">Generating stories from vision before it was cool, building dynamic text
+            narratives from egocentric heritage site videos.</p>
         </div>
       </article>
 
@@ -557,6 +570,38 @@
         const next = isDark ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+
+  <!-- Research Filter Script -->
+  <script>
+    (function () {
+      const filters = document.getElementById('research-filters');
+      const cards = document.querySelectorAll('.paper-card[data-tags]');
+      const buttons = filters.querySelectorAll('.filter-tag');
+
+      filters.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-tag');
+        if (!btn) return;
+
+        const filter = btn.dataset.filter;
+
+        buttons.forEach(b => b.classList.remove('filter-tag--active'));
+        btn.classList.add('filter-tag--active');
+
+        cards.forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('paper-card--hidden');
+          } else {
+            const tags = card.dataset.tags.split(',');
+            if (tags.includes(filter)) {
+              card.classList.remove('paper-card--hidden');
+            } else {
+              card.classList.add('paper-card--hidden');
+            }
+          }
+        });
       });
     })();
   </script>

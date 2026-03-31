@@ -341,6 +341,48 @@ a:focus {
   line-height: 1.75;
 }
 
+/* ---------- Research Filters ---------- */
+.research__filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.filter-tag {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.filter-tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.filter-tag--active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.filter-tag--active:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 /* ---------- Paper Card ---------- */
 .paper-card {
   display: flex;
@@ -350,7 +392,20 @@ a:focus {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    opacity 0.3s ease, max-height 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.paper-card--hidden {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-color: transparent;
+  pointer-events: none;
 }
 
 .paper-card:hover {
