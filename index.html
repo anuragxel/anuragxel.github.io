@@ -609,6 +609,105 @@
     })();
   </script>
 
+  <!-- Sidebar Observer Script -->
+  <script>
+    (function () {
+      var research = document.getElementById('research');
+      var filters = document.getElementById('research-filters');
+      var mql = window.matchMedia('(min-width: 1280px)');
+      var ticking = false;
+
+      function check() {
+        if (!mql.matches) {
+          filters.classList.remove('sidebar-visible');
+          return;
+        }
+        var rect = research.getBoundingClientRect();
+        // Show only when research top is at/above viewport (scrolled into it)
+        // AND research bottom is still below 30% of viewport (haven't scrolled past)
+        var show = rect.top <= 80 && rect.bottom > window.innerHeight * 0.3;
+        filters.classList.toggle('sidebar-visible', show);
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () { check(); ticking = false; });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      mql.addEventListener('change', check);
+      check();
+    })();
+  </script>
+
+  <!-- Per-Paper Tag Pills Script -->
+  <script>
+    (function () {
+      var tagMeta = {
+        'perception': { label: 'Perception', bg: '#eff6ff', c: '#2563eb', b: '#bfdbfe', dBg: 'rgba(37,99,235,0.15)', dC: '#93c5fd' },
+        'planning': { label: 'Planning', bg: '#f5f3ff', c: '#7c3aed', b: '#ddd6fe', dBg: 'rgba(124,58,237,0.15)', dC: '#c4b5fd' },
+        '3d-geometry': { label: '3D & Geometry', bg: '#ecfeff', c: '#0891b2', b: '#a5f3fc', dBg: 'rgba(8,145,178,0.15)', dC: '#67e8f9' },
+        'localization': { label: 'Localization', bg: '#ecfdf5', c: '#059669', b: '#a7f3d0', dBg: 'rgba(5,150,105,0.15)', dC: '#6ee7b7' },
+        'language': { label: 'Language', bg: '#fffbeb', c: '#b45309', b: '#fde68a', dBg: 'rgba(217,119,6,0.15)', dC: '#fcd34d' },
+        'real-time': { label: 'Real-Time', bg: '#fef2f2', c: '#dc2626', b: '#fecaca', dBg: 'rgba(220,38,38,0.15)', dC: '#fca5a5' },
+        'deployed': { label: 'Deployed', bg: '#fdf2f8', c: '#db2777', b: '#fbcfe8', dBg: 'rgba(219,39,119,0.15)', dC: '#f9a8d4' },
+        'datasets': { label: 'Datasets', bg: '#f0fdfa', c: '#0d9488', b: '#99f6e4', dBg: 'rgba(13,148,136,0.15)', dC: '#5eead4' }
+      };
+
+      function isDark() {
+        var t = document.documentElement.getAttribute('data-theme');
+        if (t === 'dark') return true;
+        if (t === 'light') return false;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function applyColors() {
+        var dark = isDark();
+        document.querySelectorAll('.paper-card__tag').forEach(function (el) {
+          var m = tagMeta[el.dataset.tagType];
+          if (!m) return;
+          el.style.setProperty('--tag-bg', dark ? m.dBg : m.bg);
+          el.style.setProperty('--tag-color', dark ? m.dC : m.c);
+          el.style.setProperty('--tag-border', dark ? 'transparent' : m.b);
+        });
+      }
+
+      // Generate tag pills
+      document.querySelectorAll('.paper-card[data-tags]').forEach(function (card) {
+        var tags = card.dataset.tags.split(',').map(function (t) { return t.trim(); })
+          .filter(function (t) { return t && t !== 'featured' && tagMeta[t]; });
+        if (!tags.length) return;
+
+        var container = document.createElement('div');
+        container.className = 'paper-card__tags';
+        tags.forEach(function (tag) {
+          var el = document.createElement('span');
+          el.className = 'paper-card__tag';
+          el.dataset.tagType = tag;
+          el.textContent = tagMeta[tag].label;
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
+            // Find and click the matching global filter button
+            var filterBtn = document.querySelector('.filter-tag[data-filter="' + tag + '"]');
+            if (filterBtn) filterBtn.click();
+            // Scroll to the top of the research section
+            document.getElementById('research').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+          container.appendChild(el);
+        });
+        card.querySelector('.paper-card__body').appendChild(container);
+      });
+
+      applyColors();
+
+      // Re-apply on theme changes
+      new MutationObserver(applyColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyColors);
+    })();
+  </script>
+
 </body>
 
 </html>
