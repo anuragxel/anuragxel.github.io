@@ -31,7 +31,7 @@
           <h1 class="hero__name">Anurag Ghosh</h1>
           <div class="hero__bio">
             <p>I'm a Computer Vision and Robotics Researcher and Engineer passionate about building
-              full-stack embodied systems -- from novel algorithms published at CVPR, NeurIPS, and ICCV, to deployed
+              full-stack embodied systems, from novel algorithms published at CVPR, NeurIPS, and ICCV, to deployed
               systems impacting millions of users.
             </p>
             <p>Currently, I'm a final year <a href="https://www.ri.cmu.edu/">Robotics</a> PhD at <a
@@ -578,20 +578,12 @@
       const cards = document.querySelectorAll('.paper-card[data-tags]');
       const buttons = filters.querySelectorAll('.filter-tag');
 
-      filters.addEventListener('click', function (e) {
-        const btn = e.target.closest('.filter-tag');
-        if (!btn) return;
-
-        const filter = btn.dataset.filter;
-
-        buttons.forEach(b => b.classList.remove('filter-tag--active'));
-        btn.classList.add('filter-tag--active');
-
+      function applyFilter(filter) {
         cards.forEach(card => {
           if (filter === 'all') {
             card.classList.remove('paper-card--hidden');
           } else {
-            const tags = card.dataset.tags.split(',');
+            const tags = card.dataset.tags.split(',').map(t => t.trim());
             if (tags.includes(filter)) {
               card.classList.remove('paper-card--hidden');
             } else {
@@ -599,7 +591,22 @@
             }
           }
         });
+      }
+
+      filters.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-tag');
+        if (!btn) return;
+
+        buttons.forEach(b => b.classList.remove('filter-tag--active'));
+        btn.classList.add('filter-tag--active');
+        applyFilter(btn.dataset.filter);
       });
+
+      // Initialize filter based on default active button
+      const activeBtn = filters.querySelector('.filter-tag--active');
+      if (activeBtn) {
+        applyFilter(activeBtn.dataset.filter);
+      }
     })();
   </script>
 
