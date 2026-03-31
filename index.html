@@ -31,9 +31,8 @@
           <h1 class="hero__name">Anurag Ghosh</h1>
           <div class="hero__bio">
             <p>I'm a <a href="https://www.ri.cmu.edu/">Robotics</a> PhD at <a href="https://www.cmu.edu/">Carnegie
-                Mellon</a>, advised by <a href="http://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a> working on
-              <a href="http://vision.cs.cmu.edu/">Computer Vision</a> and <a
-                href="https://imaging.cs.cmu.edu/">Imaging</a> problems. I was co-advised by <a
+                Mellon</a>, advised by <a href="http://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a>. I work on
+              open-world perception and planning. I was co-advised by <a
                 href="http://www.cs.cmu.edu/~srinivas/">Srinivasa Narasimhan</a> and <a
                 href="https://www.ri.cmu.edu/ri-people/christoph-mertz/">Christoph Mertz</a> when I got my Masters
               here.
@@ -42,9 +41,9 @@
             <p>
               I spent a few wonderful years at <a
                 href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research</a>
-              working at the intersection of Computer Vision and Networked/Distributed <a
-                href="https://www.microsoft.com/en-us/research/theme/systems/">Systems</a> for <a
-                href="https://www.microsoft.com/en-us/research/collaboration/scai/">Social Good</a>. I worked with <a
+              working at the intersection of scalable perception and distributed <a
+                href="https://www.microsoft.com/en-us/research/theme/systems/">systems</a> for <a
+                href="https://www.microsoft.com/en-us/research/collaboration/scai/">social good</a>. I worked with <a
                 href="https://www.microsoft.com/en-us/research/people/padmanab/">Venkat Padmanabhan</a>, <a
                 href="https://www.microsoft.com/en-us/research/people/akshayn/">Akshay Nambi</a> and <a
                 href="https://www.microsoft.com/en-us/research/people/taganu/">Tanuja Ganu</a>.
@@ -52,8 +51,8 @@
             <p>
               Even earlier, I studied at a vibrant and beautiful research-focused school, <a
                 href="https://www.iiit.ac.in/">IIIT Hyderabad</a>. I was advised by <a
-                href="https://faculty.iiit.ac.in/~jawahar/">C. V. Jawahar</a> and we worked on problems involving <a
-                href="https://cvit.iiit.ac.in">Computer Vision</a> for Sports.
+                href="https://faculty.iiit.ac.in/~jawahar/">C. V. Jawahar</a> and we worked on structured perception for
+              <a href="https://cvit.iiit.ac.in">broadcast sports</a>.
             </p>
 
             <p>Here's my <a
@@ -88,7 +87,10 @@
       <p class="research__intro">
         I love building intelligent systems that work to delight millions and hopefully, billions of users. I'm broadly
         interested in closing the perception-action loop for robotics in our extremely messy and beautiful open physical
-        world, while ensuring that the systems we build are frugal, accessible, and deployable at scale.
+        world, while ensuring that the systems we build are frugal, accessible, and deployable at scale. I am passionate
+        about building full-stack embodied systems—from novel algorithms published at CVPR, NeurIPS, and ICCV, to
+        deployed
+        systems impacting millions of users.
       </p>
 
       <div class="research__filters" id="research-filters">
@@ -121,8 +123,8 @@
             <a href="https://arxiv.org/abs/2603.28522">Paper</a>
             <a href="https://www.youtube.com/watch?v=H6-MGF6mQQY">Video</a>
           </div>
-          <p class="paper-card__desc">A real-time planner combining rule-based (RAD) and language-based (LAD) autonomous
-            driving for tackling long-tailed situations.</p>
+          <p class="paper-card__desc">A real-time Language-Action planner combining grounded rule-based reasoning with
+            Large Language Models (LLMs) to handle complex, long-tailed autonomous driving scenarios.</p>
         </div>
       </article>
 
@@ -145,7 +147,8 @@
             <a href="https://arxiv.org/abs/2406.07661">Paper</a>
             <a href="https://github.com/anuragxel/roadwork-dataset">Code</a>
           </div>
-          <p class="paper-card__desc">Largest open-source dataset for studying autonomous driving in work zones.</p>
+          <p class="paper-card__desc">A comprehensive open-source dataset and benchmark for studying long-tail, complex
+            autonomous driving scenarios in work zones.</p>
         </div>
       </article>
 
@@ -186,15 +189,14 @@
             <a href="https://arxiv.org/abs/2403.12712">Paper</a>
             <a href="https://github.com/ShenZheng2000/Instance-Warp">Code</a>
           </div>
-          <p class="paper-card__desc">Oversample salient object regions by warping source-domain images in-place during
-            training while performing domain adaptation. Improve adaptation across geographies, lighting and weather
-            conditions, is agnostic to the task, domain adaptation algorithm, saliency guidance, and underlying model
-            architecture.</p>
+          <p class="paper-card__desc">An unsupervised domain adaptation approach that oversamples salient regions via
+            in-place image warping during self-distillation. It improves model robustness across diverse geographies,
+            lighting, and weather conditions—facilitating reliable real-world deployment.</p>
         </div>
       </article>
 
       <!-- Two-Plane Perspective Prior -->
-      <article class="paper-card" data-tags="3d-geometry,perception,real-time">
+      <article class="paper-card" data-tags="featured,3d-geometry,perception,real-time">
         <div class="paper-card__thumb">
           <img src="tn/images/two-plane-banner.png" alt="Two-Plane Perspective Prior">
         </div>
@@ -210,9 +212,9 @@
             <a href="https://arxiv.org/abs/2303.14311">Paper</a>
             <a href="https://github.com/geometriczoom/two-plane-prior">Code</a>
           </div>
-          <p class="paper-card__desc">A learnable geometry-guided prior that incorporates rough geometry of the 3D scene
-            (a ground plane and a plane above) to resample the images for efficient object detection. This significantly
-            improves small and far-away object detection performance while also being more efficient.</p>
+          <p class="paper-card__desc">A learnable, geometry-aware image resampling approach that incorporates 3D scene
+            priors (ground and sky planes) into the perception pipeline, significantly improving both the efficiency and
+            accuracy of detecting small, far-away objects.</p>
         </div>
       </article>
 
@@ -234,8 +236,9 @@
           </div>
           <p class="paper-card__award">Honorable Mention, Streaming Perception Challenge, CVPR 2021. <a
               href="https://youtu.be/DM8jWfi69zM?t=2823">Presentation at WAD</a></p>
-          <p class="paper-card__desc">A learned execution framework that automatically balances accuracy and latency for
-            real-time perception, outperforming static and dynamic policies on both server GPUs and edge devices.</p>
+          <p class="paper-card__desc">An RL-based control policy that observes scene and system state to make adaptive
+            runtime decisions (model selection, resolution, compute allocation). It jointly optimizes accuracy and
+            latency under strict real-time constraints for both server and on-device hardware.</p>
         </div>
       </article>
 
@@ -255,8 +258,8 @@
           <div class="paper-card__links">
             <a href="https://arxiv.org/abs/2210.01402">Paper</a>
           </div>
-          <p class="paper-card__desc">An edge-cloud fusion framework for video analytics that fuses edge and cloud
-            predictions asynchronously, improving object detection accuracy by up to 50% over edge-only or cloud-only
+          <p class="paper-card__desc">A fusion framework for video analytics that fuses on-device and cloud
+            predictions asynchronously, improving object detection accuracy by up to 50% over device-only or cloud-only
             approaches.</p>
         </div>
       </article>
@@ -305,11 +308,10 @@
               href="https://www.microsoft.com/en-us/research/project/hams/#!automated-driver-license-testing">Overview</a>
             and <a href="https://hams-dashboard.westus3.cloudapp.azure.com/">Dashboard</a>.</p>
 
-          <p class="paper-card__desc">Instead of <a
-              href="https://timesofindia.indiatimes.com/city/delhi/how-automated-tests-will-ensure-only-expert-drivers-are-on-road/articleshow/65940721.cms">prohibitively
-              expensive</a> (&gt;150,000$) overhead pole-mounted camera infrastructure to estimate car trajectories and
-            judge driver manuevers, we use sub-500$ smartphones and additionally get driver state monitoring for
-            free (face verification, mirror scanning, distraction and seatbelt checks).</p>
+          <p class="paper-card__desc">A deployed nationwide automated driver's license testing platform (100K+ users)
+            replacing expensive pole-mounted infrastructure with a $500 smartphone. Implements robust monocular 3D
+            localization (SfM/SLAM), IMU-based jerk recognition, and multi-modal perception for accurate trajectory
+            estimation and driver state monitoring.</p>
 
           <h4 class="paper-card__sub-heading">Relevant Publications</h4>
 
@@ -349,9 +351,9 @@
             <a
               href="http://web2py.iiit.ac.in/research_centres/publications/view_publication/mastersthesis/746">Thesis</a>
           </div>
-          <p class="paper-card__desc">Consolidates our sports analytics work, and additionally includes tennis
-            analytics for comparing the long-term playing styles and attributes of Federer, Nadal, and Djokovic from
-            broadcast footage.</p>
+          <p class="paper-card__desc">A geometry-aware perception system for broadcast racket sports. Automatically
+            performs court-mapping, player tracking, and shot classification from monocular TV footage to quantitatively
+            compare the playing styles of Federer, Nadal, and Djokovic.</p>
         </div>
       </article>
 
@@ -371,7 +373,7 @@
             <a href="http://cvit.iiit.ac.in/research/projects/cvit-projects/badminton-analytics">Paper</a>
             <a href="https://arxiv.org/abs/2308.12199">Real-Time Deployment</a>
           </div>
-          <p class="paper-card__desc">An end-to-end framework for real-time player movement analysis from live broadcast
+          <p class="paper-card__desc">An end-to-end framework for real-time player analysis from live broadcast
             badminton videos using only visual cues — computing on-court distance, speed, and heatmaps without
             multi-modal sensors.</p>
         </div>
