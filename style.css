@@ -1117,6 +1117,98 @@ a:focus {
   background: rgba(0, 0, 0, 0.9);
 }
 
+/* ============================================
+   FLOATING SECTION INDICATOR
+   ============================================ */
+.section-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(15, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.section-indicator--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.section-indicator__item {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.section-indicator__item:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.section-indicator__item--active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .section-indicator {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .section-indicator__item {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .section-indicator__item:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .section-indicator__item--active {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .section-indicator {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  }
+  :root:not([data-theme="dark"]) .section-indicator__item {
+    color: var(--text-muted);
+  }
+  :root:not([data-theme="dark"]) .section-indicator__item:hover {
+    color: var(--text-primary);
+  }
+  :root:not([data-theme="dark"]) .section-indicator__item--active {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+}
+
+/* Hide on mobile — too crowded */
+@media (max-width: 768px) {
+  .section-indicator {
+    display: none;
+  }
+}
+
 .footer__attribution {
   text-align: center;
   font-size: 0.8rem;

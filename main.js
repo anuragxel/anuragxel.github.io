@@ -227,6 +227,9 @@
   // Highlight active section
   var sections = ['top', 'research', 'press', 'links'];
   var ticking = false;
+  var indicator = document.getElementById('section-indicator');
+  var indicatorItems = indicator.querySelectorAll('.section-indicator__item');
+
   function highlightActive() {
     var scrollY = window.scrollY + 120;
     var active = 'top';
@@ -237,6 +240,12 @@
     links.forEach(function (link) {
       link.classList.toggle('nav-dropdown__link--active', link.dataset.section === active);
     });
+    // Update floating indicator
+    indicatorItems.forEach(function (item) {
+      item.classList.toggle('section-indicator__item--active', item.dataset.section === active);
+    });
+    // Show indicator after scrolling past hero
+    indicator.classList.toggle('section-indicator--visible', window.scrollY > 300);
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { requestAnimationFrame(function () { highlightActive(); ticking = false; }); ticking = true; }
