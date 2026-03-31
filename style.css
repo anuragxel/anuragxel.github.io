@@ -701,14 +701,15 @@ a:focus {
 }
 
 .filter-tag--search {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
   font-style: italic;
 }
 
 .filter-tag--search:hover {
-  background: var(--text-secondary);
-  border-color: var(--text-secondary);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
   color: #fff;
 }
 
