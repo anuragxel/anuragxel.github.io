@@ -283,9 +283,9 @@
   });
   // Sections
   [{ id: 'top', label: 'Home', icon: '🏠' },
-   { id: 'research', label: 'Research', icon: '🔬' },
-   { id: 'press', label: 'Press', icon: '📰' },
-   { id: 'links', label: 'Inspiring Links', icon: '✨' }
+  { id: 'research', label: 'Research', icon: '🔬' },
+  { id: 'press', label: 'Press', icon: '📰' },
+  { id: 'links', label: 'Inspiring Links', icon: '✨' }
   ].forEach(function (s) {
     items.push({ type: 'section', icon: s.icon, title: s.label, sub: 'Section', el: document.getElementById(s.id), haystack: s.label.toLowerCase() });
   });
@@ -306,8 +306,8 @@
     activeIdx = -1;
     var filtered = query
       ? items.filter(function (it) {
-          return matchItem(query, it);
-        })
+        return matchItem(query, it);
+      })
       : items;
 
     if (!filtered.length) {
@@ -460,10 +460,9 @@
     },
     {
       text: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
-      attribution: '— भगवान श्रीकृष्ण ने अर्जुन से कुरुक्षेत्र के युद्धभूमि पर कहा।'
+      attribution: '— भगवान श्रीकृष्ण ने अर्जुन से कुरुक्षेत्र की युद्धभूमि पर कहा।'
     }
   ];
-
   // Mixed character pool: Latin + Devanagari for the scramble noise
   var latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   var devanagari = 'अआइईउऊएऐओऔकखगघचछजझटठडढणतथदधनपफबभमयरलवशषसह';
