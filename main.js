@@ -140,14 +140,14 @@
 /* ---------- Per-Paper Tag Pills ---------- */
 (function () {
   var tagMeta = {
-    'perception': { label: 'Perception', bg: '#eff6ff', c: '#2563eb', b: '#bfdbfe', dBg: 'rgba(37,99,235,0.15)', dC: '#93c5fd' },
-    'planning': { label: 'Planning', bg: '#f5f3ff', c: '#7c3aed', b: '#ddd6fe', dBg: 'rgba(124,58,237,0.15)', dC: '#c4b5fd' },
-    '3d-geometry': { label: '3D & Geometry', bg: '#ecfeff', c: '#0891b2', b: '#a5f3fc', dBg: 'rgba(8,145,178,0.15)', dC: '#67e8f9' },
-    'localization': { label: 'Localization', bg: '#ecfdf5', c: '#059669', b: '#a7f3d0', dBg: 'rgba(5,150,105,0.15)', dC: '#6ee7b7' },
-    'language': { label: 'Language', bg: '#fffbeb', c: '#b45309', b: '#fde68a', dBg: 'rgba(217,119,6,0.15)', dC: '#fcd34d' },
-    'real-time': { label: 'Real-Time', bg: '#fef2f2', c: '#dc2626', b: '#fecaca', dBg: 'rgba(220,38,38,0.15)', dC: '#fca5a5' },
-    'deployed': { label: 'Deployed', bg: '#fdf2f8', c: '#db2777', b: '#fbcfe8', dBg: 'rgba(219,39,119,0.15)', dC: '#f9a8d4' },
-    'datasets': { label: 'Datasets', bg: '#f0fdfa', c: '#0d9488', b: '#99f6e4', dBg: 'rgba(13,148,136,0.15)', dC: '#5eead4' }
+    'perception': { label: 'Perception', bg: 'rgba(30,64,175,0.10)', c: '#1e40af', b: 'transparent', dBg: 'rgba(147,196,253,0.12)', dC: '#93c5fd' },
+    'planning': { label: 'Planning', bg: 'rgba(126,34,206,0.10)', c: '#7e22ce', b: 'transparent', dBg: 'rgba(192,132,252,0.12)', dC: '#c084fc' },
+    '3d-geometry': { label: '3D & Geometry', bg: 'rgba(14,116,144,0.10)', c: '#0e7490', b: 'transparent', dBg: 'rgba(103,232,249,0.12)', dC: '#67e8f9' },
+    'localization': { label: 'Localization', bg: 'rgba(17,94,89,0.10)', c: '#115e59', b: 'transparent', dBg: 'rgba(94,234,212,0.12)', dC: '#5eead4' },
+    'language': { label: 'Language', bg: 'rgba(146,64,14,0.10)', c: '#92400e', b: 'transparent', dBg: 'rgba(252,211,77,0.12)', dC: '#fcd34d' },
+    'real-time': { label: 'Real-Time', bg: 'rgba(153,27,27,0.10)', c: '#991b1b', b: 'transparent', dBg: 'rgba(252,165,165,0.12)', dC: '#fca5a5' },
+    'deployed': { label: 'Deployed', bg: 'rgba(157,23,77,0.10)', c: '#9d174d', b: 'transparent', dBg: 'rgba(249,168,212,0.12)', dC: '#f9a8d4' },
+    'datasets': { label: 'Datasets', bg: 'rgba(22,101,52,0.10)', c: '#166534', b: 'transparent', dBg: 'rgba(134,239,172,0.12)', dC: '#86efac' }
   };
 
   function isDark() {
@@ -579,4 +579,139 @@
   // Initialize with first quote (no animation)
   setQuoteImmediate(0);
   startAutoRotate();
+})();
+
+/* ---------- Scroll Hue Shift ---------- */
+(function () {
+  var maxShift = 15; // degrees
+  var ticking = false;
+  function update() {
+    var scrollH = document.body.scrollHeight - window.innerHeight;
+    var fraction = scrollH > 0 ? window.scrollY / scrollH : 0;
+    var hue = fraction * maxShift;
+    document.documentElement.style.setProperty('--hue-shift', hue + 'deg');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+})();
+
+/* ---------- Paper Texture Generator ---------- */
+(function () {
+  function generatePaperTexture(size, fiberCount, opacity) {
+    var canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+
+    // Draw random fibers
+    for (var i = 0; i < fiberCount; i++) {
+      var x1 = Math.random() * size;
+      var y1 = Math.random() * size;
+      var angle = Math.random() * Math.PI;
+      var len = 3 + Math.random() * 8;
+      var x2 = x1 + Math.cos(angle) * len;
+      var y2 = y1 + Math.sin(angle) * len;
+
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineWidth = 0.5 + Math.random() * 1;
+
+      // Shadow pass — faint, wider, slightly offset
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0,0,0,' + (opacity * 0.3) + ')';
+      ctx.lineWidth += 1.5;
+      ctx.translate(0.5, 0.8);
+      ctx.stroke();
+      ctx.restore();
+
+      // Main fiber
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineWidth = 0.5 + Math.random() * 1;
+
+      if (Math.random() > 0.5) {
+        ctx.strokeStyle = 'rgba(0,0,0,' + (opacity * (0.5 + Math.random() * 0.5)) + ')';
+      } else {
+        ctx.strokeStyle = 'rgba(255,255,255,' + (opacity * 1.5 * (0.5 + Math.random() * 0.5)) + ')';
+      }
+      ctx.stroke();
+    }
+
+    // Add tiny dots/specks
+    for (var j = 0; j < fiberCount * 0.3; j++) {
+      var dx = Math.random() * size;
+      var dy = Math.random() * size;
+      var r = 0.3 + Math.random() * 0.8;
+      ctx.beginPath();
+      ctx.arc(dx, dy, r, 0, Math.PI * 2);
+      if (Math.random() > 0.5) {
+        ctx.fillStyle = 'rgba(0,0,0,' + (opacity * 0.6) + ')';
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,' + (opacity * 1.2) + ')';
+      }
+      ctx.fill();
+    }
+
+    // Soften fibers to feel like paper
+    ctx.filter = 'blur(1px)';
+    ctx.drawImage(canvas, 0, 0);
+    ctx.filter = 'none';
+
+    return canvas.toDataURL('image/png');
+  }
+
+  var bodyUrl = generatePaperTexture(400, 32, 0.06);
+  var cardUrl = generatePaperTexture(300, 32, 0.05);
+  var cardStyleEl = document.createElement('style');
+  document.head.appendChild(cardStyleEl);
+
+  var bodyGradients =
+    'repeating-linear-gradient(0deg, rgba(0,0,0,0.022) 0px, transparent 1px, transparent 5px),' +
+    'repeating-linear-gradient(90deg, rgba(0,0,0,0.018) 0px, transparent 1px, transparent 6px),' +
+    'repeating-linear-gradient(30deg, rgba(0,0,0,0.014) 0px, transparent 1px, transparent 8px),' +
+    'repeating-linear-gradient(150deg, rgba(255,255,255,0.26) 0px, transparent 1px, transparent 7px)';
+  var bodySizes = '12px 12px, 14px 14px, 18px 18px, 16px 16px, 200px 200px';
+
+  var cardGradients =
+    'repeating-linear-gradient(0deg, rgba(0,0,0,0.018) 0px, transparent 1px, transparent 5px),' +
+    'repeating-linear-gradient(90deg, rgba(0,0,0,0.015) 0px, transparent 1px, transparent 6px),' +
+    'repeating-linear-gradient(45deg, rgba(0,0,0,0.012) 0px, transparent 1px, transparent 7px),' +
+    'repeating-linear-gradient(135deg, rgba(0,0,0,0.01) 0px, transparent 1px, transparent 8px),' +
+    'repeating-linear-gradient(22deg, rgba(255,255,255,0.2) 0px, transparent 1px, transparent 6px),' +
+    'repeating-linear-gradient(67deg, rgba(0,0,0,0.012) 0px, transparent 1px, transparent 9px),' +
+    'repeating-linear-gradient(112deg, rgba(255,255,255,0.16) 0px, transparent 1px, transparent 7px)';
+  var cardSizes = '10px 10px, 12px 12px, 14px 14px, 16px 16px, 11px 11px, 18px 18px, 13px 13px, 300px 300px';
+
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function applyTextures() {
+    if (isDark()) {
+      document.body.style.removeProperty('background-image');
+      document.body.style.removeProperty('background-size');
+      cardStyleEl.textContent = '';
+      return;
+    }
+    // document.body.style.backgroundImage = bodyGradients + ', url(' + bodyUrl + ')';
+    // document.body.style.backgroundSize = bodySizes;
+    // cardStyleEl.textContent = '.paper-card { background-image: ' + cardGradients + ', url(' + cardUrl + ') !important; background-size: ' + cardSizes + ' !important; }';
+  }
+
+  applyTextures();
+
+  // Re-apply on theme changes
+  new MutationObserver(applyTextures).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTextures);
 })();
