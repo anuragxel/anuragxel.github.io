@@ -1060,6 +1060,14 @@ a:focus {
   font-style: italic;
   max-width: 700px;
   margin: 0 auto 1.5rem;
+  cursor: pointer;
+  min-height: 4.5em;
+  transition: opacity 0.2s ease;
+  white-space: pre-line;
+}
+
+.footer__quote:hover {
+  opacity: 0.8;
 }
 
 .footer__ack {

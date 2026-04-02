@@ -447,3 +447,137 @@
     }
   });
 })();
+
+/* ---------- Quote Scramble ---------- */
+(function () {
+  var el = document.getElementById('footer-quote');
+  if (!el) return;
+
+  var quotes = [
+    {
+      text: 'I must study Politicks and War that my sons may have liberty to study Mathematicks and Philosophy. My sons ought to study Mathematicks and Philosophy, Geography, Natural History, Naval Architecture, Navigation, Commerce and Agriculture, in order to give their children a right to study Painting, Poetry, Musick, Architecture, Statuary, Tapestry and Porcelaine.',
+      attribution: '— John Adams, American Founding Father'
+    },
+    {
+      text: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
+      attribution: '— भगवान श्रीकृष्ण ने अर्जुन से कुरुक्षेत्र के युद्धभूमि पर कहा।'
+    }
+  ];
+
+  // Mixed character pool: Latin + Devanagari for the scramble noise
+  var latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  var devanagari = 'अआइईउऊएऐओऔकखगघचछजझटठडढणतथदधनपफबभमयरलवशषसह';
+  var pool = latin + devanagari;
+
+  var currentIndex = 0;
+  var autoTimer = null;
+  var animFrame = null;
+  var isAnimating = false;
+
+  function randomChar() {
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function setQuoteImmediate(idx) {
+    var q = quotes[idx];
+    el.textContent = q.text + '\n' + q.attribution;
+  }
+
+  function scrambleTo(idx, callback) {
+    if (isAnimating) {
+      // Cancel running animation
+      cancelAnimationFrame(animFrame);
+    }
+    isAnimating = true;
+
+    var target = quotes[idx].text + '\n' + quotes[idx].attribution;
+    // Split target into array of characters (handles multi-byte Unicode)
+    var targetChars = Array.from(target);
+    var len = targetChars.length;
+
+    // Each position gets a number of scramble iterations before resolving
+    var iterationsPerChar = 4;
+    var totalStaggerMs = 600; // total wave duration budget, spread across all chars
+    var staggerMs = Math.min(12, totalStaggerMs / Math.max(len, 1));
+    var frameMs = 30; // ms per scramble frame
+
+    // Current display array — start with random chars of the target length
+    var display = [];
+    for (var i = 0; i < len; i++) {
+      display[i] = targetChars[i] === '\n' ? '\n' : targetChars[i] === ' ' ? ' ' : randomChar();
+    }
+
+    // Resolve state per character: how many scramble frames remain
+    var remaining = [];
+    for (var j = 0; j < len; j++) {
+      if (targetChars[j] === ' ' || targetChars[j] === '\n') {
+        remaining[j] = 0; // spaces and newlines resolve instantly
+      } else {
+        // Stagger: characters further right get more iterations
+        remaining[j] = iterationsPerChar + Math.floor(j * staggerMs / frameMs);
+      }
+    }
+
+    var startTime = performance.now();
+
+    function tick() {
+      var elapsed = performance.now() - startTime;
+      var frame = Math.floor(elapsed / frameMs);
+      var allDone = true;
+
+      for (var k = 0; k < len; k++) {
+        if (remaining[k] <= 0) {
+          display[k] = targetChars[k];
+        } else {
+          // Count down based on frame number, factoring in stagger
+          var charFrame = frame - Math.floor(k * staggerMs / frameMs);
+          if (charFrame >= iterationsPerChar) {
+            remaining[k] = 0;
+            display[k] = targetChars[k];
+          } else if (charFrame >= 0) {
+            display[k] = randomChar();
+            allDone = false;
+          } else {
+            // Not started yet — keep as random
+            display[k] = randomChar();
+            allDone = false;
+          }
+        }
+      }
+
+      el.textContent = display.join('');
+
+      if (allDone) {
+        isAnimating = false;
+        if (callback) callback();
+      } else {
+        animFrame = requestAnimationFrame(tick);
+      }
+    }
+
+    animFrame = requestAnimationFrame(tick);
+  }
+
+  function switchToNext() {
+    var nextIndex = (currentIndex + 1) % quotes.length;
+    scrambleTo(nextIndex, function () {
+      currentIndex = nextIndex;
+    });
+  }
+
+  function startAutoRotate() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(switchToNext, 8000);
+  }
+
+  // Click to switch immediately
+  el.addEventListener('click', function () {
+    clearInterval(autoTimer);
+    switchToNext();
+    startAutoRotate();
+  });
+
+  // Initialize with first quote (no animation)
+  setQuoteImmediate(0);
+  startAutoRotate();
+})();
