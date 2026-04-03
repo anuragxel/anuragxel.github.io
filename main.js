@@ -10,6 +10,8 @@
 
   if (stored) {
     root.setAttribute('data-theme', stored);
+  } else {
+    root.setAttribute('data-theme', 'light');
   }
 
   toggle.addEventListener('click', function () {
