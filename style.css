@@ -115,6 +115,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   :root:not([data-theme="light"]) body,
   :root:not([data-theme="light"]) .paper-card {
     background-image: none !important;
@@ -595,7 +596,7 @@ a:focus {
 .hero__mentoring {
   margin-top: 0.4rem;
   padding: 0.75rem 1rem;
-  background: var(--accent-light);
+  background: var(--bg-secondary);
   border-left: 3px solid var(--border-accent);
   border-radius: var(--radius-sm);
   font-size: 0.92rem;
@@ -663,6 +664,7 @@ a:focus {
     color: #18181b !important;
     border-color: #fafafa !important;
   }
+
   :root:not([data-theme="light"]) .hero__link--primary:hover {
     background: #d4d4d8 !important;
     border-color: #d4d4d8 !important;
@@ -780,6 +782,7 @@ a:focus {
     background: #e4e4e7;
     border-color: #e4e4e7;
   }
+
   :root:not([data-theme="light"]) .filter-tag--active:hover {
     background: #d4d4d8;
     border-color: #d4d4d8;
@@ -807,19 +810,10 @@ a:focus {
   padding: 1.5rem;
   margin-bottom: 1rem;
   background-color: var(--bg-card);
-  /* background-image:
-    repeating-linear-gradient(0deg, rgba(0,0,0,0.018) 0px, transparent 1px, transparent 5px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.015) 0px, transparent 1px, transparent 6px),
-    repeating-linear-gradient(45deg, rgba(0,0,0,0.012) 0px, transparent 1px, transparent 7px),
-    repeating-linear-gradient(135deg, rgba(0,0,0,0.01) 0px, transparent 1px, transparent 8px),
-    repeating-linear-gradient(22deg, rgba(255,255,255,0.2) 0px, transparent 1px, transparent 6px),
-    repeating-linear-gradient(67deg, rgba(0,0,0,0.012) 0px, transparent 1px, transparent 9px),
-    repeating-linear-gradient(112deg, rgba(255,255,255,0.16) 0px, transparent 1px, transparent 7px);
-  background-size: 10px 10px, 12px 12px, 14px 14px, 16px 16px, 11px 11px, 18px 18px, 13px 13px; */
-  border: none;
-  border-radius: var(--radius);
-  box-shadow: inset 0 0 0 1px var(--border-subtle), 0 4px 12px rgba(0,0,0,0.10), 0 12px 36px rgba(0,0,0,0.06);
-  transition: box-shadow 0.2s ease,
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease,
     opacity 0.3s ease, max-height 0.4s ease, padding 0.3s ease, margin 0.3s ease;
   max-height: 800px;
   overflow: hidden;
@@ -831,12 +825,25 @@ a:focus {
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
+  border-color: transparent;
   box-shadow: none;
   pointer-events: none;
 }
 
 .paper-card:hover {
-  box-shadow: inset 0 0 0 1px #d4d4d8, 0 2px 8px rgba(0,0,0,0.04);
+  border-color: var(--text-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Featured cards — harsh offset shadow */
+.paper-card--featured {
+  box-shadow: 4px 4px 0 var(--border-subtle);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease,
+    opacity 0.3s ease, max-height 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+}
+
+.paper-card--featured:hover {
+  box-shadow: 6px 6px 0 var(--text-primary);
 }
 
 .paper-card__thumb {
@@ -1040,16 +1047,15 @@ a:focus {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
+  border-radius: 4px;
   transition: all 0.2s ease;
   min-height: 60px;
 }
 
 .press__logo:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-card-hover);
+  border-color: var(--text-primary);
   transform: translateY(-2px);
 }
 
@@ -1058,14 +1064,10 @@ a:focus {
   max-height: 36px;
   height: auto;
   object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-  filter: grayscale(30%);
 }
 
 .press__logo:hover img {
   opacity: 1;
-  filter: grayscale(0%);
 }
 
 /* Dark mode press logos: invert for visibility */
@@ -1298,12 +1300,15 @@ a:focus {
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
   }
+
   :root:not([data-theme="dark"]) .section-indicator__item {
     color: var(--text-muted);
   }
+
   :root:not([data-theme="dark"]) .section-indicator__item:hover {
     color: var(--text-primary);
   }
+
   :root:not([data-theme="dark"]) .section-indicator__item--active {
     background: var(--accent-light);
     color: var(--accent);

@@ -24,6 +24,16 @@
   });
 })();
 
+/* ---------- Featured Cards ---------- */
+(function () {
+  document.querySelectorAll('.paper-card[data-tags]').forEach(function (card) {
+    var tags = card.getAttribute('data-tags').split(',').map(function (t) { return t.trim(); });
+    if (tags.indexOf('featured') !== -1) {
+      card.classList.add('paper-card--featured');
+    }
+  });
+})();
+
 /* ---------- Research Filters ---------- */
 (function () {
   var filters = document.getElementById('research-filters');
