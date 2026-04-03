@@ -683,12 +683,12 @@ a:focus {
   border-radius: 4px;
   border: 1px solid var(--text-primary);
   box-shadow: 4px 4px 0 var(--text-primary);
-  filter: saturate(0.7) blur(0.1px);
+  filter: saturate(0.7);
   transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .hero__photo img:hover {
-  filter: saturate(1) blur(0);
+  filter: saturate(1);
   box-shadow: 6px 6px 0 var(--text-primary);
 }
 
