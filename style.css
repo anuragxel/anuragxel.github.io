@@ -683,7 +683,7 @@ a:focus {
   border-radius: 4px;
   border: 1px solid var(--text-primary);
   box-shadow: 4px 4px 0 var(--text-primary);
-  filter: saturate(0.7) blur(0.25px);
+  filter: saturate(0.7) blur(0.1px);
   transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
 
