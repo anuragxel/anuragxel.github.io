@@ -1073,7 +1073,12 @@ a:focus {
   opacity: 1;
 }
 
-/* Dark mode press logos: invert for visibility */
+/* Dark mode press cards & logos */
+[data-theme="dark"] .press__logo {
+  background: #23232a;
+  border-color: var(--border-subtle);
+}
+
 [data-theme="dark"] .press__logo img {
   filter: grayscale(30%) brightness(1.2);
 }
@@ -1083,6 +1088,11 @@ a:focus {
 }
 
 @media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .press__logo {
+    background: #23232a;
+    border-color: var(--border-subtle);
+  }
+
   :root:not([data-theme="light"]) .press__logo img {
     filter: grayscale(30%) brightness(1.2);
   }
