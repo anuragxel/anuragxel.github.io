@@ -108,19 +108,6 @@
   --shadow-profile: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
-/* ---------- Dark Mode: No Textures ---------- */
-[data-theme="dark"] body,
-[data-theme="dark"] .paper-card {
-  background-image: none !important;
-}
-
-@media (prefers-color-scheme: dark) {
-
-  :root:not([data-theme="light"]) body,
-  :root:not([data-theme="light"]) .paper-card {
-    background-image: none !important;
-  }
-}
 
 /* ---------- Reset & Base ---------- */
 *,
@@ -140,12 +127,6 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  /* background-image:
-    repeating-linear-gradient(0deg, rgba(0,0,0,0.022) 0px, transparent 1px, transparent 5px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.018) 0px, transparent 1px, transparent 6px),
-    repeating-linear-gradient(30deg, rgba(0,0,0,0.014) 0px, transparent 1px, transparent 8px),
-    repeating-linear-gradient(150deg, rgba(255,255,255,0.26) 0px, transparent 1px, transparent 7px);
-  background-size: 12px 12px, 14px 14px, 18px 18px, 16px 16px; */
   color: var(--text-primary);
   line-height: 1.7;
   font-size: 15px;
@@ -1335,21 +1316,7 @@ a:focus {
   }
 }
 
-.footer__attribution {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
 
-.footer__attribution a {
-  color: var(--text-muted);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.footer__attribution a:hover {
-  color: var(--accent);
-}
 
 /* ============================================
    SIDEBAR FILTERS (Wide Screens >= 1280px)
