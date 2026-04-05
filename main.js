@@ -2,26 +2,9 @@
    Anurag Ghosh — Personal Website Scripts
    ============================================ */
 
-/* ---------- Theme Toggle ---------- */
+/* ---------- Force Light Theme ---------- */
 (function () {
-  var toggle = document.getElementById('theme-toggle');
-  var root = document.documentElement;
-  var stored = localStorage.getItem('theme');
-
-  if (stored) {
-    root.setAttribute('data-theme', stored);
-  } else {
-    root.setAttribute('data-theme', 'light');
-  }
-
-  toggle.addEventListener('click', function () {
-    var current = root.getAttribute('data-theme');
-    var isDark = current === 'dark' ||
-      (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    var next = isDark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+  document.documentElement.setAttribute('data-theme', 'light');
 })();
 
 /* ---------- Featured Cards ---------- */
@@ -119,40 +102,30 @@
   var cards = document.querySelectorAll('.paper-card[data-tags]');
   var ticking = false;
 
-  // Category color map (matches tagMeta in Per-Paper Tag Pills)
+  // Category color map
   var filterColors = {
-    'perception':   { c: '#1e40af', bg: 'rgba(30,64,175,0.15)',   dC: '#93c5fd', dBg: 'rgba(147,196,253,0.18)' },
-    'planning':     { c: '#7e22ce', bg: 'rgba(126,34,206,0.15)',  dC: '#c084fc', dBg: 'rgba(192,132,252,0.18)' },
-    '3d-geometry':  { c: '#0e7490', bg: 'rgba(14,116,144,0.15)',  dC: '#67e8f9', dBg: 'rgba(103,232,249,0.18)' },
-    'localization': { c: '#115e59', bg: 'rgba(17,94,89,0.15)',    dC: '#5eead4', dBg: 'rgba(94,234,212,0.18)' },
-    'language':     { c: '#92400e', bg: 'rgba(146,64,14,0.15)',   dC: '#fcd34d', dBg: 'rgba(252,211,77,0.18)' },
-    'real-time':    { c: '#991b1b', bg: 'rgba(153,27,27,0.15)',   dC: '#fca5a5', dBg: 'rgba(252,165,165,0.18)' },
-    'deployed':     { c: '#9d174d', bg: 'rgba(157,23,77,0.15)',   dC: '#f9a8d4', dBg: 'rgba(249,168,212,0.18)' },
-    'datasets':     { c: '#166534', bg: 'rgba(22,101,52,0.15)',   dC: '#86efac', dBg: 'rgba(134,239,172,0.18)' }
+    'perception':   { c: '#1e40af', bg: 'rgba(30,64,175,0.15)' },
+    'planning':     { c: '#7e22ce', bg: 'rgba(126,34,206,0.15)' },
+    '3d-geometry':  { c: '#0e7490', bg: 'rgba(14,116,144,0.15)' },
+    'localization': { c: '#115e59', bg: 'rgba(17,94,89,0.15)' },
+    'language':     { c: '#92400e', bg: 'rgba(146,64,14,0.15)' },
+    'real-time':    { c: '#991b1b', bg: 'rgba(153,27,27,0.15)' },
+    'deployed':     { c: '#9d174d', bg: 'rgba(157,23,77,0.15)' },
+    'datasets':     { c: '#166534', bg: 'rgba(22,101,52,0.15)' }
   };
 
-  function isDark() {
-    var t = document.documentElement.getAttribute('data-theme');
-    if (t === 'dark') return true;
-    if (t === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-
-  // --- (c) Apply category hover colors via CSS custom properties ---
+  // Apply category hover colors via CSS custom properties
   function applyFilterColors() {
-    var dark = isDark();
     filters.querySelectorAll('.filter-tag[data-filter]').forEach(function (btn) {
       var fc = filterColors[btn.dataset.filter];
       if (fc) {
-        btn.style.setProperty('--filter-hover-color', dark ? fc.dC : fc.c);
-        btn.style.setProperty('--filter-hover-bg', dark ? fc.dBg : fc.bg);
-        btn.style.setProperty('--filter-hover-border', dark ? fc.dC : fc.c);
+        btn.style.setProperty('--filter-hover-color', fc.c);
+        btn.style.setProperty('--filter-hover-bg', fc.bg);
+        btn.style.setProperty('--filter-hover-border', fc.c);
       }
     });
   }
   applyFilterColors();
-  new MutationObserver(applyFilterColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyFilterColors);
 
   // --- (a) Search feedback: result count badge ---
   var badge = document.createElement('span');
@@ -299,31 +272,23 @@
 /* ---------- Per-Paper Tag Pills ---------- */
 (function () {
   var tagMeta = {
-    'perception': { label: 'Perception', bg: 'rgba(30,64,175,0.10)', c: '#1e40af', b: 'transparent', dBg: 'rgba(147,196,253,0.12)', dC: '#93c5fd' },
-    'planning': { label: 'Planning', bg: 'rgba(126,34,206,0.10)', c: '#7e22ce', b: 'transparent', dBg: 'rgba(192,132,252,0.12)', dC: '#c084fc' },
-    '3d-geometry': { label: '3D & Geometry', bg: 'rgba(14,116,144,0.10)', c: '#0e7490', b: 'transparent', dBg: 'rgba(103,232,249,0.12)', dC: '#67e8f9' },
-    'localization': { label: 'Localization', bg: 'rgba(17,94,89,0.10)', c: '#115e59', b: 'transparent', dBg: 'rgba(94,234,212,0.12)', dC: '#5eead4' },
-    'language': { label: 'Language', bg: 'rgba(146,64,14,0.10)', c: '#92400e', b: 'transparent', dBg: 'rgba(252,211,77,0.12)', dC: '#fcd34d' },
-    'real-time': { label: 'Real-Time', bg: 'rgba(153,27,27,0.10)', c: '#991b1b', b: 'transparent', dBg: 'rgba(252,165,165,0.12)', dC: '#fca5a5' },
-    'deployed': { label: 'Deployed', bg: 'rgba(157,23,77,0.10)', c: '#9d174d', b: 'transparent', dBg: 'rgba(249,168,212,0.12)', dC: '#f9a8d4' },
-    'datasets': { label: 'Datasets', bg: 'rgba(22,101,52,0.10)', c: '#166534', b: 'transparent', dBg: 'rgba(134,239,172,0.12)', dC: '#86efac' }
+    'perception': { label: 'Perception', bg: 'rgba(30,64,175,0.10)', c: '#1e40af', b: 'transparent' },
+    'planning': { label: 'Planning', bg: 'rgba(126,34,206,0.10)', c: '#7e22ce', b: 'transparent' },
+    '3d-geometry': { label: '3D & Geometry', bg: 'rgba(14,116,144,0.10)', c: '#0e7490', b: 'transparent' },
+    'localization': { label: 'Localization', bg: 'rgba(17,94,89,0.10)', c: '#115e59', b: 'transparent' },
+    'language': { label: 'Language', bg: 'rgba(146,64,14,0.10)', c: '#92400e', b: 'transparent' },
+    'real-time': { label: 'Real-Time', bg: 'rgba(153,27,27,0.10)', c: '#991b1b', b: 'transparent' },
+    'deployed': { label: 'Deployed', bg: 'rgba(157,23,77,0.10)', c: '#9d174d', b: 'transparent' },
+    'datasets': { label: 'Datasets', bg: 'rgba(22,101,52,0.10)', c: '#166534', b: 'transparent' }
   };
 
-  function isDark() {
-    var t = document.documentElement.getAttribute('data-theme');
-    if (t === 'dark') return true;
-    if (t === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-
   function applyColors() {
-    var dark = isDark();
     document.querySelectorAll('.paper-card__tag').forEach(function (el) {
       var m = tagMeta[el.dataset.tagType];
       if (!m) return;
-      el.style.setProperty('--tag-bg', dark ? m.dBg : m.bg);
-      el.style.setProperty('--tag-color', dark ? m.dC : m.c);
-      el.style.setProperty('--tag-border', dark ? 'transparent' : m.b);
+      el.style.setProperty('--tag-bg', m.bg);
+      el.style.setProperty('--tag-color', m.c);
+      el.style.setProperty('--tag-border', m.b);
     });
   }
 
@@ -354,9 +319,6 @@
 
   applyColors();
 
-  // Re-apply on theme changes
-  new MutationObserver(applyColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyColors);
 })();
 
 /* ---------- Section Nav ---------- */
