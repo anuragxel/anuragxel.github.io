@@ -131,23 +131,6 @@
         world, while ensuring that the systems we build are efficient, frugal, accessible, and deployable at scale.
       </p>
 
-      <div class="research__filters" id="research-filters">
-        <button class="filter-tag filter-tag--active" data-filter="featured">Featured</button>
-        <button class="filter-tag" data-filter="all">All</button>
-        <button class="filter-tag" data-filter="perception">Perception</button>
-        <button class="filter-tag" data-filter="planning">Planning</button>
-        <button class="filter-tag" data-filter="3d-geometry">3D & Geometry</button>
-        <button class="filter-tag" data-filter="localization">Localization</button>
-        <button class="filter-tag" data-filter="language">Language</button>
-        <button class="filter-tag" data-filter="real-time">Real-Time & Efficient</button>
-        <button class="filter-tag" data-filter="deployed">Deployed at Scale</button>
-        <button class="filter-tag" data-filter="datasets">Datasets & Benchmarks</button>
-      </div>
-
-      <p class="research__search-hint" id="search-hint">
-        💡 Press <kbd>⌘K</kbd> or <kbd>Ctrl+K</kbd> to quickly search my work (or just click on the tags!)
-      </p>
-
       <!-- RAD-LAD -->
       <article class="paper-card" data-tags="featured, planning,real-time,language"
         data-keywords="LLM VLA autonomous driving rules grounded planner action nuPlan hybrid motion planning closed-loop latency language-action explainable decision-making self-driving car robot foundation model robotics vision AI deep learning anytime">
@@ -609,6 +592,28 @@
     </section>
 
   </main>
+
+  <!-- Floating Filter Pill -->
+  <div class="filter-pill" id="filter-pill">
+    <div class="filter-pill__search-wrap">
+      <span class="filter-pill__search-icon">🔍</span>
+      <input class="filter-pill__input" id="filter-pill-input" type="text" placeholder="Search papers…"
+        autocomplete="off">
+    </div>
+    <div class="filter-pill__divider"></div>
+    <div class="filter-pill__tags" id="research-filters">
+      <button class="filter-tag filter-tag--active" data-filter="featured">Featured</button>
+      <button class="filter-tag" data-filter="all">All</button>
+      <button class="filter-tag" data-filter="perception">Perception</button>
+      <button class="filter-tag" data-filter="planning">Planning</button>
+      <button class="filter-tag" data-filter="3d-geometry">3D &amp; Geometry</button>
+      <button class="filter-tag" data-filter="localization">Localization</button>
+      <button class="filter-tag" data-filter="language">Language</button>
+      <button class="filter-tag" data-filter="datasets">Datasets &amp; Benchmarks</button>
+      <button class="filter-tag" data-filter="real-time">Real-Time &amp; Efficient</button>
+      <button class="filter-tag" data-filter="deployed">Deployed at Scale</button>
+    </div>
+  </div>
 
   <!-- ============================================
        FOOTER

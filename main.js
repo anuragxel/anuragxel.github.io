@@ -38,7 +38,6 @@
 (function () {
   var filters = document.getElementById('research-filters');
   var cards = document.querySelectorAll('.paper-card[data-tags]');
-  var buttons = filters.querySelectorAll('.filter-tag');
   var searchTag = null; // dynamic "Search: ..." button
 
   function applyFilter(filter) {
@@ -64,7 +63,8 @@
   }
 
   function clearActiveFilters() {
-    buttons.forEach(function (b) { b.classList.remove('filter-tag--active'); });
+    // Query dynamically to include clones added later
+    filters.querySelectorAll('.filter-tag').forEach(function (b) { b.classList.remove('filter-tag--active'); });
     removeSearchTag();
   }
 
@@ -73,8 +73,12 @@
     if (!btn) return;
 
     clearActiveFilters();
-    btn.classList.add('filter-tag--active');
-    applyFilter(btn.dataset.filter);
+    // Activate all buttons with same filter value (handles clones)
+    var filterVal = btn.dataset.filter;
+    filters.querySelectorAll('.filter-tag').forEach(function (b) {
+      if (b.dataset.filter === filterVal) b.classList.add('filter-tag--active');
+    });
+    applyFilter(filterVal);
   });
 
   // Initialize filter based on default active button
@@ -101,41 +105,164 @@
       var match = words.every(function (w) { return haystack.indexOf(w) !== -1; });
       card.classList.toggle('paper-card--hidden', !match);
     });
-
-    // Create/update the search tag button
-    removeSearchTag();
-    searchTag = document.createElement('button');
-    searchTag.className = 'filter-tag filter-tag--active filter-tag--search';
-    searchTag.textContent = '🔍 "' + query + '" ✕';
-    searchTag.addEventListener('click', function (e) {
-      e.stopPropagation();
-      removeSearchTag();
-      // Reset to "Featured"
-      var featuredBtn = filters.querySelector('.filter-tag[data-filter="featured"]');
-      if (featuredBtn) {
-        featuredBtn.classList.add('filter-tag--active');
-        applyFilter('featured');
-      }
-    });
-    filters.appendChild(searchTag);
   };
 })();
 
-/* ---------- Sidebar Observer ---------- */
+/* ---------- Filter Pill Visibility + Inline Search ---------- */
 (function () {
   var research = document.getElementById('research');
+  var pill = document.getElementById('filter-pill');
+  var pillInput = document.getElementById('filter-pill-input');
   var filters = document.getElementById('research-filters');
-  var mql = window.matchMedia('(min-width: 1280px)');
+  var cards = document.querySelectorAll('.paper-card[data-tags]');
   var ticking = false;
 
-  function check() {
-    if (!mql.matches) {
-      filters.classList.remove('sidebar-visible');
-      return;
+  // Category color map (matches tagMeta in Per-Paper Tag Pills)
+  var filterColors = {
+    'perception':   { c: '#1e40af', bg: 'rgba(30,64,175,0.15)',   dC: '#93c5fd', dBg: 'rgba(147,196,253,0.18)' },
+    'planning':     { c: '#7e22ce', bg: 'rgba(126,34,206,0.15)',  dC: '#c084fc', dBg: 'rgba(192,132,252,0.18)' },
+    '3d-geometry':  { c: '#0e7490', bg: 'rgba(14,116,144,0.15)',  dC: '#67e8f9', dBg: 'rgba(103,232,249,0.18)' },
+    'localization': { c: '#115e59', bg: 'rgba(17,94,89,0.15)',    dC: '#5eead4', dBg: 'rgba(94,234,212,0.18)' },
+    'language':     { c: '#92400e', bg: 'rgba(146,64,14,0.15)',   dC: '#fcd34d', dBg: 'rgba(252,211,77,0.18)' },
+    'real-time':    { c: '#991b1b', bg: 'rgba(153,27,27,0.15)',   dC: '#fca5a5', dBg: 'rgba(252,165,165,0.18)' },
+    'deployed':     { c: '#9d174d', bg: 'rgba(157,23,77,0.15)',   dC: '#f9a8d4', dBg: 'rgba(249,168,212,0.18)' },
+    'datasets':     { c: '#166534', bg: 'rgba(22,101,52,0.15)',   dC: '#86efac', dBg: 'rgba(134,239,172,0.18)' }
+  };
+
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  // --- (c) Apply category hover colors via CSS custom properties ---
+  function applyFilterColors() {
+    var dark = isDark();
+    filters.querySelectorAll('.filter-tag[data-filter]').forEach(function (btn) {
+      var fc = filterColors[btn.dataset.filter];
+      if (fc) {
+        btn.style.setProperty('--filter-hover-color', dark ? fc.dC : fc.c);
+        btn.style.setProperty('--filter-hover-bg', dark ? fc.dBg : fc.bg);
+        btn.style.setProperty('--filter-hover-border', dark ? fc.dC : fc.c);
+      }
+    });
+  }
+  applyFilterColors();
+  new MutationObserver(applyFilterColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyFilterColors);
+
+  // --- (a) Search feedback: result count badge ---
+  var badge = document.createElement('span');
+  badge.className = 'filter-pill__badge';
+  badge.style.display = 'none';
+  pill.querySelector('.filter-pill__search-wrap').appendChild(badge);
+
+  function updateBadge() {
+    var visible = 0;
+    cards.forEach(function (c) { if (!c.classList.contains('paper-card--hidden')) visible++; });
+    var query = pillInput.value.trim();
+    if (query) {
+      badge.textContent = visible + ' result' + (visible !== 1 ? 's' : '');
+      badge.style.display = '';
+      pill.classList.add('filter-pill--searching');
+    } else {
+      badge.style.display = 'none';
+      pill.classList.remove('filter-pill--searching');
     }
+  }
+
+  // --- (b) Infinite scroll: triple-clone the tags for seamless looping ---
+  var originalBtns = Array.from(filters.querySelectorAll('.filter-tag'));
+  var setCount = 3; // before + center + after
+
+  // Clone two extra sets
+  for (var s = 0; s < setCount - 1; s++) {
+    originalBtns.forEach(function (btn) {
+      var clone = btn.cloneNode(true);
+      clone.classList.remove('filter-tag--active');
+      filters.appendChild(clone);
+    });
+  }
+
+  var allBtns = filters.querySelectorAll('.filter-tag');
+  var centerStartIdx = originalBtns.length; // index where center set begins
+  var totalPerSet = originalBtns.length;
+
+  // Scroll the active tag to center of the strip
+  function scrollToCenter(btn, smooth) {
+    var containerRect = filters.getBoundingClientRect();
+    var btnRect = btn.getBoundingClientRect();
+    var offset = btnRect.left - containerRect.left - (containerRect.width / 2) + (btnRect.width / 2);
+    filters.scrollBy({ left: offset, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  // On initial load, mark all "Featured" clones active and center the one in the center set
+  allBtns.forEach(function (b) {
+    if (b.dataset.filter === 'featured') b.classList.add('filter-tag--active');
+  });
+  requestAnimationFrame(function () {
+    var centerFeatured = allBtns[centerStartIdx]; // first of center set = Featured
+    if (centerFeatured) scrollToCenter(centerFeatured, false);
+  });
+
+  // Convert vertical wheel scroll to horizontal on the tag strip
+  filters.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      filters.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+
+
+  var snapTimeout = null;
+  filters.addEventListener('scroll', function () {
+    clearTimeout(snapTimeout);
+    snapTimeout = setTimeout(function () {
+      var scrollLeft = filters.scrollLeft;
+      var scrollWidth = filters.scrollWidth;
+      var clientWidth = filters.clientWidth;
+      var oneSetWidth = scrollWidth / setCount;
+
+      // If scrolled into the first clone set, jump forward
+      if (scrollLeft < oneSetWidth * 0.3) {
+        filters.scrollLeft = scrollLeft + oneSetWidth;
+      }
+      // If scrolled into the last clone set, jump back
+      else if (scrollLeft > oneSetWidth * 1.7) {
+        filters.scrollLeft = scrollLeft - oneSetWidth;
+      }
+    }, 120);
+  }, { passive: true });
+
+  // Handle click on any filter tag (original or clone) — delegate
+  filters.addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-tag');
+    if (!btn) return;
+
+    // Clear search input
+    pillInput.value = '';
+
+    // Clear all active states across all clones
+    allBtns.forEach(function (b) { b.classList.remove('filter-tag--active'); });
+
+    // Activate all buttons with same filter value
+    var filterVal = btn.dataset.filter;
+    allBtns.forEach(function (b) {
+      if (b.dataset.filter === filterVal) b.classList.add('filter-tag--active');
+    });
+
+    // Scroll clicked button to center
+    scrollToCenter(btn, true);
+
+    updateBadge();
+  });
+
+  // --- Pill visibility ---
+  function check() {
     var rect = research.getBoundingClientRect();
-    var show = rect.top <= 80 && rect.bottom > window.innerHeight * 0.3;
-    filters.classList.toggle('sidebar-visible', show);
+    var show = rect.top <= window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.3;
+    pill.classList.toggle('filter-pill--visible', show);
   }
 
   window.addEventListener('scroll', function () {
@@ -144,10 +271,28 @@
       ticking = true;
     }
   }, { passive: true });
-
-  mql.addEventListener('change', check);
   check();
+
+  // --- Inline search ---
+  var debounceTimer = null;
+  pillInput.addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    var query = pillInput.value.trim();
+    debounceTimer = setTimeout(function () {
+      if (query) {
+        window.__applySearchFilter(query);
+        // Deactivate all filter tags when searching
+        allBtns.forEach(function (b) { b.classList.remove('filter-tag--active'); });
+      } else {
+        // Empty — restore featured filter
+        var featuredBtn = filters.querySelector('.filter-tag[data-filter="featured"]');
+        if (featuredBtn) featuredBtn.click();
+      }
+      updateBadge();
+    }, 200);
+  });
 })();
+
 
 /* ---------- Per-Paper Tag Pills ---------- */
 (function () {
@@ -422,11 +567,6 @@
   // Initial render
   render('');
 
-  // Search hint click opens palette
-  var searchHint = document.getElementById('search-hint');
-  if (searchHint) {
-    searchHint.addEventListener('click', function () { open(); });
-  }
 })();
 
 /* ---------- Easter Egg ---------- */
