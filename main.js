@@ -113,6 +113,8 @@
   var research = document.getElementById('research');
   var pill = document.getElementById('filter-pill');
   var pillInput = document.getElementById('filter-pill-input');
+  var isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
+  pillInput.placeholder = (isMac ? '⌘K' : 'Ctrl+K') + ' to search…';
   var filters = document.getElementById('research-filters');
   var cards = document.querySelectorAll('.paper-card[data-tags]');
   var ticking = false;
