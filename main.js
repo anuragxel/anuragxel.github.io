@@ -91,27 +91,32 @@
   };
 })();
 
-/* ---------- Filter Pill Visibility + Inline Search ---------- */
+/* ---------- Filter Pill Visibility + Inline Search + FLIP Animation ---------- */
 (function () {
   var research = document.getElementById('research');
   var pill = document.getElementById('filter-pill');
   var pillInput = document.getElementById('filter-pill-input');
+  var pillAnchor = document.getElementById('pill-anchor');
   var isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
-  pillInput.placeholder = (isMac ? '⌘K' : 'Ctrl+K') + ' to search…';
+  pillInput.placeholder = (isMac ? '⌘K' : 'Ctrl+K') + ' to search papers…';
   var filters = document.getElementById('research-filters');
   var cards = document.querySelectorAll('.paper-card[data-tags]');
   var ticking = false;
 
+  // Track pill state: 'inline' | 'fixed' | 'hidden'
+  var pillState = 'inline';
+  var isAnimating = false;
+
   // Category color map
   var filterColors = {
-    'perception':   { c: '#1e40af', bg: 'rgba(30,64,175,0.15)' },
-    'planning':     { c: '#7e22ce', bg: 'rgba(126,34,206,0.15)' },
-    '3d-geometry':  { c: '#0e7490', bg: 'rgba(14,116,144,0.15)' },
+    'perception': { c: '#1e40af', bg: 'rgba(30,64,175,0.15)' },
+    'planning': { c: '#7e22ce', bg: 'rgba(126,34,206,0.15)' },
+    '3d-geometry': { c: '#0e7490', bg: 'rgba(14,116,144,0.15)' },
     'localization': { c: '#115e59', bg: 'rgba(17,94,89,0.15)' },
-    'language':     { c: '#92400e', bg: 'rgba(146,64,14,0.15)' },
-    'real-time':    { c: '#991b1b', bg: 'rgba(153,27,27,0.15)' },
-    'deployed':     { c: '#9d174d', bg: 'rgba(157,23,77,0.15)' },
-    'datasets':     { c: '#166534', bg: 'rgba(22,101,52,0.15)' }
+    'language': { c: '#92400e', bg: 'rgba(146,64,14,0.15)' },
+    'real-time': { c: '#991b1b', bg: 'rgba(153,27,27,0.15)' },
+    'deployed': { c: '#9d174d', bg: 'rgba(157,23,77,0.15)' },
+    'datasets': { c: '#166534', bg: 'rgba(22,101,52,0.15)' }
   };
 
   // Apply category hover colors via CSS custom properties
@@ -233,11 +238,125 @@
     updateBadge();
   });
 
-  // --- Pill visibility ---
+  // ======================================================
+  // FLIP animation: inline ↔ fixed transition
+  // ======================================================
+
+  function setPillState(cls) {
+    pill.classList.remove('filter-pill--inline', 'filter-pill--fixed', 'filter-pill--hidden', 'filter-pill--visible');
+    // Always clear inline transform so CSS class transform takes effect cleanly
+    pill.style.transform = '';
+    pill.style.transition = '';
+    pill.classList.add(cls);
+  }
+
+  // Animate pill from its current visual position to a new state using FLIP
+  function flipTo(targetClass) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // FIRST: capture current visual position
+    var firstRect = pill.getBoundingClientRect();
+
+    // Apply target state instantly (no transition, clear inline transform)
+    pill.style.transition = 'none';
+    pill.style.transform = '';
+    pill.classList.remove('filter-pill--inline', 'filter-pill--fixed', 'filter-pill--hidden', 'filter-pill--visible');
+    pill.classList.add(targetClass);
+
+    // Force layout recalc so target position is computed
+    void pill.offsetHeight;
+
+    // LAST: capture target visual position
+    var lastRect = pill.getBoundingClientRect();
+
+    // INVERT: calculate delta from target back to original
+    var dx = firstRect.left - lastRect.left;
+    var dy = firstRect.top - lastRect.top;
+
+    // Compose the inverted offset with the target's base transform
+    if (targetClass === 'filter-pill--fixed') {
+      // Fixed state base: translateX(-50%)
+      pill.style.transform = 'translateX(-50%) translate(' + dx + 'px, ' + dy + 'px)';
+    } else {
+      // Inline state base: none
+      pill.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
+    }
+
+    // Force layout so the inverted position is rendered
+    void pill.offsetHeight;
+
+    // PLAY: animate to final position
+    pill.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+
+    if (targetClass === 'filter-pill--fixed') {
+      pill.style.transform = 'translateX(-50%)';
+    } else {
+      pill.style.transform = 'none';
+    }
+
+    function onEnd() {
+      pill.removeEventListener('transitionend', onEnd);
+      // Clear inline styles so CSS classes own the transforms
+      pill.style.transition = '';
+      pill.style.transform = '';
+      isAnimating = false;
+    }
+
+    pill.addEventListener('transitionend', onEnd);
+
+    // Safety timeout
+    setTimeout(function () {
+      if (isAnimating) onEnd();
+    }, 550);
+  }
+
+  // --- Pill visibility + state management ---
   function check() {
-    var rect = research.getBoundingClientRect();
-    var show = rect.top <= window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.3;
-    pill.classList.toggle('filter-pill--visible', show);
+    if (isAnimating) return;
+
+    var researchRect = research.getBoundingClientRect();
+    var anchorRect = pillAnchor.getBoundingClientRect();
+    var viewportH = window.innerHeight;
+
+    // Is the research section meaningfully in view?
+    var researchInView = researchRect.top <= viewportH * 0.6 && researchRect.bottom > viewportH * 0.2;
+
+    // Has the anchor's bottom scrolled above the viewport top?
+    var anchorAbove = anchorRect.bottom < 0;
+
+    // When pill is inline, it scrolls naturally — never force-hide it.
+    // Only hide when transitioning from the fixed state.
+    if (pillState === 'inline') {
+      if (researchInView && anchorAbove) {
+        pillState = 'fixed';
+        flipTo('filter-pill--fixed');
+      }
+      // else: stay inline, scroll naturally
+    } else if (pillState === 'fixed') {
+      if (!researchInView) {
+        setPillState('filter-pill--hidden');
+        pillState = 'hidden';
+      } else if (!anchorAbove) {
+        pillState = 'inline';
+        flipTo('filter-pill--inline');
+      }
+    } else if (pillState === 'hidden') {
+      if (researchInView && anchorAbove) {
+        // Slide up into fixed
+        setPillState('filter-pill--hidden');
+        void pill.offsetHeight;
+        pill.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease';
+        pill.classList.remove('filter-pill--hidden');
+        pill.classList.add('filter-pill--fixed');
+        pill.style.transform = '';
+        setTimeout(function () { pill.style.transition = ''; }, 500);
+        pillState = 'fixed';
+      } else if (researchInView && !anchorAbove) {
+        setPillState('filter-pill--inline');
+        pillState = 'inline';
+      }
+    }
   }
 
   window.addEventListener('scroll', function () {

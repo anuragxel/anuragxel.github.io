@@ -660,12 +660,14 @@ a:focus {
 /* ============================================
    FLOATING FILTER PILL
    ============================================ */
+
+/* Anchor placeholder — invisible, marks inline position */
+.pill-anchor {
+  height: 0;
+  overflow: visible;
+}
+
 .filter-pill {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(calc(100% + 2rem));
-  z-index: 200;
   display: flex;
   align-items: center;
   gap: 0;
@@ -676,18 +678,54 @@ a:focus {
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 9999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 4px 4px 0 var(--border-subtle);
   padding: 0.45rem 0.75rem;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
+  z-index: 200;
+  /* will-change for smoother GPU compositing during animation */
+  will-change: transform;
 }
 
-.filter-pill--visible {
-  transform: translateX(-50%) translateY(0);
+.filter-pill:hover {
+  border-color: var(--text-secondary);
+  box-shadow: 6px 6px 0 var(--text-primary);
+}
+
+/* --- Inline state: pill lives in normal document flow, centered --- */
+.filter-pill--inline {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  margin: 1rem auto 1.5rem;
+  max-width: min(720px, 90%);
+  transform: none;
   opacity: 1;
   pointer-events: all;
+}
+
+/* --- Fixed state: pill docked at top center of viewport --- */
+.filter-pill--fixed {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  margin: 0;
+  max-width: min(720px, 90%);
+  transform: translateX(-50%);
+  box-shadow: 4px 4px 0 var(--border-subtle);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- Hidden state: pill slides up off-screen --- */
+.filter-pill--hidden {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%) translateY(calc(-100% - 2rem));
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
 }
 
 /* Search input section */
