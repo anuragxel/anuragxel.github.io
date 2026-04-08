@@ -798,11 +798,19 @@ a:focus {
 
 
 
-/* Mobile: full-width pill, stacked if needed */
+/* Mobile: pill stays inline, never floats */
 @media (max-width: 640px) {
-  .filter-pill {
+  .filter-pill,
+  .filter-pill--fixed,
+  .filter-pill--hidden {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    margin: 1rem auto 1.5rem;
     max-width: calc(100vw - 2rem);
-    bottom: 1rem;
     padding: 0.4rem 0.6rem;
   }
 
