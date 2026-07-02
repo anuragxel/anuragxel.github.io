@@ -114,6 +114,7 @@
     '3d-geometry': { c: '#0e7490', bg: 'rgba(14,116,144,0.15)' },
     'localization': { c: '#115e59', bg: 'rgba(17,94,89,0.15)' },
     'language': { c: '#92400e', bg: 'rgba(146,64,14,0.15)' },
+    'generative': { c: '#86198f', bg: 'rgba(134,25,143,0.15)' },
     'real-time': { c: '#991b1b', bg: 'rgba(153,27,27,0.15)' },
     'deployed': { c: '#9d174d', bg: 'rgba(157,23,77,0.15)' },
     'datasets': { c: '#166534', bg: 'rgba(22,101,52,0.15)' }
@@ -396,6 +397,7 @@
     '3d-geometry': { label: '3D & Geometry', bg: 'rgba(14,116,144,0.10)', c: '#0e7490', b: 'transparent' },
     'localization': { label: 'Localization', bg: 'rgba(17,94,89,0.10)', c: '#115e59', b: 'transparent' },
     'language': { label: 'Language', bg: 'rgba(146,64,14,0.10)', c: '#92400e', b: 'transparent' },
+    'generative': { label: 'Generative', bg: 'rgba(134,25,143,0.10)', c: '#86198f', b: 'transparent' },
     'real-time': { label: 'Real-Time', bg: 'rgba(153,27,27,0.10)', c: '#991b1b', b: 'transparent' },
     'deployed': { label: 'Deployed', bg: 'rgba(157,23,77,0.10)', c: '#9d174d', b: 'transparent' },
     'datasets': { label: 'Datasets', bg: 'rgba(22,101,52,0.10)', c: '#166534', b: 'transparent' }
